@@ -1,8 +1,11 @@
-<h1>DeriPulse Private Limited</h1>
-<h2>To run the app </h2>
-<h3>Install Dependencies</h3>
-<p>```yarn```</p>
-<h3>Run the server</h3>
-<p>```yarn run dev```</p>
-<h2>API Documentation</h2>
-<p>Put the API docs here</p>
+# Deri Pulse - Crypto Derivatives 
+
+Deripulse is a crypto derivatives information hub, offering real-time insights into protocol data. It provides Total Value Locked, trading volumes, growth trends, smart contract specifics, official sites, and Twitter links. Ideal for traders and enthusiasts, Deri Pulse keeps users updated on the dynamic crypto derivatives realm.
+
+## Running the App
+
+`yarn` to install dependencies
+`yarn run dev` to run the app
+
+## API Documentation
+
