@@ -4,9 +4,9 @@ Deripulse is a crypto derivatives information hub, offering real-time insights i
 
 ## Running the App
 
-`yarn` to install dependencies
+`npm i` to install dependencies
 
-`yarn run dev` to run the app
+`npm run dev` to run the app
 
 ## API Documentation
 
