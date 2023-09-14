@@ -1,0 +1,31 @@
+.topGainers {
+  position: absolute;
+  top: 127px;
+  left: 107px;
+  width: 382px;
+  height: 183px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #131313;
+  box-shadow: 2.72109px 2.72109px 22.44898px 0px rgba(0, 0, 0, 0.05);
+}
+
+.Heading {
+  display:flex;
+  position: relative;
+  /* justify-content: space-evenly; */
+  top: 15px;
+  left: 27px;
+  text-align: left;
+  color: #bebebe;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.star {
+  padding-left: 0.4rem;
+}
