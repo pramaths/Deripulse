@@ -9,11 +9,15 @@ import graphdown from "../../assests/graphdown.svg";
 import graphup from "../../assests/graphup.svg";
 import prediction from "../../assests/prediction.svg";
 const TopPools = () => {
+  const [TAPR, setTAPR] = useState([]);
   const [APR, setAPR] = useState([]);
   const [L_APR, setL_APR] = useState([]);
   const [avgAPR, setavgAPR] = useState();
 
   useEffect(() => {
+    async function tvlbased(res) {
+      return res.sort((a, b) => b.tvlUSD - a.tvlUSD);
+    }
     async function aprAvg(res) {
       var sum = 0;
       var totalTVL = 0;
@@ -26,12 +30,16 @@ const TopPools = () => {
       const resp = sum / totalTVL;
       return resp;
     }
+
     async function fetchAPR() {
       try {
         const res = await axios.get("http://localhost:3000/api/apr");
         //console.log(res.data.slice(0, 3));
+
         setAPR(res.data.slice(0, 3));
         setL_APR(res.data.slice(-3));
+        const tvl = await tvlbased(res.data);
+        setTAPR(tvl);
         const resp = await aprAvg(res.data);
         setavgAPR(resp);
         console.log(avgAPR);
@@ -185,13 +193,19 @@ const TopPools = () => {
               <div className={styles.slash}> /</div>
               <div
                 className={`${styles.changeAPR7D} ${
-                  L_APR[1].apy7D.toFixed(4) < 0
+                  L_APR[1].apy7D !== null && L_APR[1].apy7D.toFixed(4) < 0
                     ? styles.redText
                     : styles.greenText
                 }`}
               >
-                {L_APR[1].apy7D.toFixed(4) > 0 ? "+" : ""}
-                {L_APR[1].apy7D.toFixed(4)}
+                {L_APR[1].apy7D === null
+                  ? "-"
+                  : L_APR[1].apy7D.toFixed(4) > 0
+                  ? "+"
+                  : "-"}
+                {L_APR[1].apy7D === null || L_APR[1].apy7D === 0
+                  ? ""
+                  : L_APR[1].apy7D.toFixed(4)}
               </div>
             </div>
             <div className={styles.list3}>
@@ -211,13 +225,19 @@ const TopPools = () => {
               <div className={styles.slash}> /</div>
               <div
                 className={`${styles.changeAPR7D} ${
-                  L_APR[2].apy7D.toFixed(4) < 0
+                  L_APR[2].apy7D !== null && L_APR[2].apy7D.toFixed(4) < 0
                     ? styles.redText
                     : styles.greenText
                 }`}
               >
-                {L_APR[2].apy7D.toFixed(4) > 0 ? "+" : ""}
-                {L_APR[2].apy7D.toFixed(4)}
+                {L_APR[2].apy7D === null
+                  ? "-"
+                  : L_APR[2].apy7D.toFixed(4) > 0
+                  ? "+"
+                  : "-"}
+                {L_APR[2].apy7D === null
+                  ? ""
+                  : Math.abs(L_APR[2].apy7D.toFixed(4))}
               </div>
             </div>
           </div>
@@ -229,8 +249,36 @@ const TopPools = () => {
           </div>
         </div>
         <div className={styles.part2}>
-          <div className={styles.topPools}>
-            Top Pools
+          <div className={styles.topPools}>Top Pools</div>
+          <div className={styles.bar}>
+            <table className={styles.textbar}>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Pool Name</th>
+                  <th>Price</th>
+                  <th>Name</th>
+                  
+                  <th>APY%</th>
+                  <th>Last 30d</th>
+                  <th>Last 7d</th>
+                </tr>
+              </thead>
+              <tbody className={styles.tablecells}>
+                {TAPR.map((pool, index) => (
+                  <tr key={index}>
+                    <td className={styles.tmargin}>{index + 1}</td>
+                    <td className={styles.tmargin}>{TAPR[index].symbol}</td>
+                    <td className={styles.tmargin}>{TAPR[index].tvlUSD}</td>
+                    <td className={styles.tmargin}>{TAPR[index].slug.toUpperCase()}</td>
+                    
+                    <td className={styles.tmargin}>{TAPR[index].apy.toFixed(2)}%</td>
+                    <td className={styles.tmargin}>{TAPR[index].apy30D}</td>
+                    <td className={styles.tmargin}>{TAPR[index].apy7D}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
