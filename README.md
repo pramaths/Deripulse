@@ -10,3 +10,6 @@ Deripulse is a crypto derivatives information hub, offering real-time insights i
 
 ## API Documentation
 
+### Accessing the protocol data
+
+You can go to `http://localhost:3000/api/db` in postman and get the api details. This API have all the details of a protocol. It contains chart data of TVL and other important parameters. 
