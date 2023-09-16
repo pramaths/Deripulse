@@ -1,18 +1,241 @@
+"use client";
 import styles from "../styles/toppools.module.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-
+import axios from "axios";
 import star from "../../assests/star.svg";
+import loss from "../../assests/loss.svg";
+import graphdown from "../../assests/graphdown.svg";
+import graphup from "../../assests/graphup.svg";
+import prediction from "../../assests/prediction.svg";
 const TopPools = () => {
-  return (
-    <div className={styles.topGainers}>
-      <div className={styles.Heading}>
-        <span id="TG">Top Gainers</span>
-        <div className={styles.star}>
-          <Image src={star} alt="X" />
+  const [APR, setAPR] = useState([]);
+  const [L_APR, setL_APR] = useState([]);
+  const [avgAPR, setavgAPR] = useState();
+
+  useEffect(() => {
+    async function aprAvg(res) {
+      var sum = 0;
+      var totalTVL = 0;
+      var norm;
+      for (const pool of res) {
+        norm = pool.apy * pool.tvlUSD;
+        sum += norm;
+        totalTVL += pool.tvlUSD;
+      }
+      const resp = sum / totalTVL;
+      return resp;
+    }
+    async function fetchAPR() {
+      try {
+        const res = await axios.get("http://localhost:3000/api/apr");
+        //console.log(res.data.slice(0, 3));
+        setAPR(res.data.slice(0, 3));
+        setL_APR(res.data.slice(-3));
+        const resp = await aprAvg(res.data);
+        setavgAPR(resp);
+        console.log(avgAPR);
+      } catch (error) {
+        console.error("Error fetching APR:", error);
+      }
+    }
+
+    fetchAPR();
+  }, []);
+
+  if (APR.length !== 0) {
+    return (
+      <div>
+        <div className={styles.part1}>
+          <div className={styles.topGainers}>
+            <div className={styles.Heading}>
+              <span>Top Gainers</span>
+              <div className={styles.star}>
+                <Image src={star} alt="X" />
+              </div>
+            </div>
+            <Image src={graphup} />
+            <div className={styles.list}>
+              <span>
+                1. {APR[0].symbol.substring(0, 12).replace(/-/g, " / ")}
+              </span>
+              <div
+                className={`${styles.changeAPR1D} ${
+                  APR[0].apy1D.toFixed(4) < 0
+                    ? styles.redText
+                    : styles.greenText
+                }`}
+              >
+                {APR[0].apy1D.toFixed(4) > 0 ? "+" : ""}
+                {APR[0].apy1D.toFixed(4)}
+              </div>
+              <div className={styles.slash}> /</div>
+              <div
+                className={`${styles.changeAPR7D} ${
+                  APR[0].apy7D.toFixed(4) < 0
+                    ? styles.redText
+                    : styles.greenText
+                }`}
+              >
+                {APR[0].apy7D.toFixed(4) > 0 ? "+" : ""}
+                {APR[0].apy7D.toFixed(4)}
+              </div>
+            </div>
+            <div className={styles.list2}>
+              <span>
+                2. {APR[1].symbol.substring(0, 12).replace(/-/g, " / ")}
+              </span>
+              <div
+                className={`${styles.changeAPR1D} ${
+                  APR[1].apy1D.toFixed(4) < 0
+                    ? styles.redText
+                    : styles.greenText
+                }`}
+              >
+                {APR[1].apy1D.toFixed(4) > 0 ? "+" : ""}
+                {APR[1].apy1D.toFixed(4)}
+              </div>
+              <div className={styles.slash}> /</div>
+              <div
+                className={`${styles.changeAPR7D} ${
+                  APR[1].apy7D.toFixed(4) < 0
+                    ? styles.redText
+                    : styles.greenText
+                }`}
+              >
+                {APR[1].apy7D.toFixed(4) > 0 ? "+" : ""}
+                {APR[1].apy7D.toFixed(4)}
+              </div>
+            </div>
+            <div className={styles.list3}>
+              <span>
+                3. {APR[2].symbol.substring(0, 12).replace(/-/g, " / ")}
+              </span>
+              <div
+                className={`${styles.changeAPR1D} ${
+                  APR[2].apy1D.toFixed(4) < 0
+                    ? styles.redText
+                    : styles.greenText
+                }`}
+              >
+                {APR[2].apy1D.toFixed(4) > 0 ? "+" : ""}
+                {APR[2].apy1D.toFixed(4)}
+              </div>
+              <div className={styles.slash}> /</div>
+              <div
+                className={`${styles.changeAPR7D} ${
+                  APR[2].apy7D.toFixed(4) < 0
+                    ? styles.redText
+                    : styles.greenText
+                }`}
+              >
+                {APR[2].apy7D.toFixed(4) > 0 ? "+" : ""}
+                {APR[2].apy7D.toFixed(4)}
+              </div>
+            </div>
+          </div>
+          <div className={styles.topLosers}>
+            <div className={styles.Heading}>
+              <span id="TG">Top Losers</span>
+              <div className={styles.star}>
+                <Image src={loss} alt="X" />
+              </div>
+            </div>
+            <Image src={graphdown} alt="X" />
+            <div className={styles.list}>
+              <span>
+                1. {L_APR[0].symbol.substring(0, 12).replace(/-/g, " / ")}
+              </span>
+              <div
+                className={`${styles.changeAPR1D} ${
+                  L_APR[0].apy1D.toFixed(4) < 0
+                    ? styles.redText
+                    : styles.greenText
+                }`}
+              >
+                {L_APR[0].apy1D.toFixed(4) > 0 ? "+" : ""}
+                {L_APR[0].apy1D.toFixed(4)}
+              </div>
+              <div className={styles.slash}> /</div>
+              <div
+                className={`${styles.changeAPR7D} ${
+                  L_APR[0].apy7D.toFixed(4) < 0
+                    ? styles.redText
+                    : styles.greenText
+                }`}
+              >
+                {L_APR[0].apy7D.toFixed(4) > 0 ? "+" : ""}
+                {L_APR[0].apy7D.toFixed(4)}
+              </div>
+            </div>
+            <div className={styles.list2}>
+              <span>
+                2. {L_APR[1].symbol.substring(0, 12).replace(/-/g, " / ")}
+              </span>
+              <div
+                className={`${styles.changeAPR1D} ${
+                  L_APR[1].apy1D.toFixed(4) < 0
+                    ? styles.redText
+                    : styles.greenText
+                }`}
+              >
+                {L_APR[1].apy1D.toFixed(4) > 0 ? "+" : ""}
+                {L_APR[1].apy1D.toFixed(4)}
+              </div>
+              <div className={styles.slash}> /</div>
+              <div
+                className={`${styles.changeAPR7D} ${
+                  L_APR[1].apy7D.toFixed(4) < 0
+                    ? styles.redText
+                    : styles.greenText
+                }`}
+              >
+                {L_APR[1].apy7D.toFixed(4) > 0 ? "+" : ""}
+                {L_APR[1].apy7D.toFixed(4)}
+              </div>
+            </div>
+            <div className={styles.list3}>
+              <span>
+                3. {L_APR[2].symbol.substring(0, 12).replace(/-/g, " / ")}
+              </span>
+              <div
+                className={`${styles.changeAPR1D} ${
+                  L_APR[2].apy1D.toFixed(4) < 0
+                    ? styles.redText
+                    : styles.greenText
+                }`}
+              >
+                {L_APR[2].apy1D.toFixed(4) > 0 ? "+" : ""}
+                {L_APR[2].apy1D.toFixed(4)}
+              </div>
+              <div className={styles.slash}> /</div>
+              <div
+                className={`${styles.changeAPR7D} ${
+                  L_APR[2].apy7D.toFixed(4) < 0
+                    ? styles.redText
+                    : styles.greenText
+                }`}
+              >
+                {L_APR[2].apy7D.toFixed(4) > 0 ? "+" : ""}
+                {L_APR[2].apy7D.toFixed(4)}
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.prediction}>
+            <div className={styles.semiHeading}>
+              AVG APY - {avgAPR.toFixed(4)}%
+            </div>
+          </div>
+        </div>
+        <div className={styles.part2}>
+          <div className={styles.topPools}>
+            Top Pools
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
+
 export default TopPools;
