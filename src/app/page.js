@@ -365,7 +365,7 @@ console.log
                 <div className="tablecell-pool">{item.poolLength}</div>
                 <div className="tablecell-last30d">
             
-                <AreaChart  width={150} height={60} data={data}>
+                <AreaChart  width={150} height={60} data={formattedData}>
         <defs>
           <linearGradient id="gradientFill" x1="0" y1="1" x2="0" y2="0">
             <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
