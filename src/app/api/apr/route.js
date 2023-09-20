@@ -26,9 +26,11 @@ export async function GET() {
       tvlUSD: pool.tvlUsd,
       apy7D: pool.apyPct7D,
       apy30D: pool.apyPct30D,
-      apy:pool.apy,
+      apy: pool.apy,
       prediction: pool.predictions,
       logo: await logo(pool.project),
+      poolMeta: pool.poolMeta,
+      chain: pool.chain,
     };
     APR.push(data);
   }

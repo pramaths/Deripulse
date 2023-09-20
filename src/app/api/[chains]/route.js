@@ -1,8 +1,11 @@
 import axios from "axios";
-import TVLChart from "./chartNetTVL";
+import TVLChart from "../chartNetTVL";
+import { NextResponse } from "next/server";
 
-export default async (req, res) => {
-  const chain = req.query.chains;
+
+
+export async function GET(request,{ params }) {
+  const chain = params.chains;
   try {
     const backendResponse = await axios.get("http://localhost:3000/api/db");
     const protocolData = backendResponse.data.arrProtocolData;
@@ -25,9 +28,9 @@ export default async (req, res) => {
 
     responseData.push(chartData);
 
-    res.status(200).json(responseData); 
+    return NextResponse.json(responseData); 
   } catch (error) {
     console.error("An error occurred:", error);
-    res.status(500).json({ error: error.message }); 
+    return NextResponse.json({ error: error.message }); 
   }
 };

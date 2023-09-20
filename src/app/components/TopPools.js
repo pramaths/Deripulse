@@ -7,7 +7,9 @@ import star from "../../assests/star.svg";
 import loss from "../../assests/loss.svg";
 import graphdown from "../../assests/graphdown.svg";
 import graphup from "../../assests/graphup.svg";
-import prediction from "../../assests/prediction.svg";
+import info from "../../assests/info.svg";
+import { Tooltip as ReactTooltip } from "react-tooltip";
+
 const TopPools = () => {
   const [TAPR, setTAPR] = useState([]);
   const [APR, setAPR] = useState([]);
@@ -56,6 +58,14 @@ const TopPools = () => {
       <div>
         <div className={styles.part1}>
           <div className={styles.topGainers}>
+            <div className={styles.tooltip}>
+              <Image data-tooltip-id="topGainers" src={info}/>
+              <ReactTooltip
+                id="topGainers"
+                place="bottom"
+                content="Top 3 Gainers in terms of APR"
+              />
+            </div>
             <div className={styles.Heading}>
               <span>Top Gainers</span>
               <div className={styles.star}>
@@ -63,6 +73,7 @@ const TopPools = () => {
               </div>
             </div>
             <Image src={graphup} />
+
             <div className={styles.list}>
               <span>
                 1. {APR[0].symbol.substring(0, 12).replace(/-/g, " / ")}
@@ -132,18 +143,29 @@ const TopPools = () => {
               <div className={styles.slash}> /</div>
               <div
                 className={`${styles.changeAPR7D} ${
-                  APR[2].apy7D.toFixed(4) < 0
+                  APR[2].apy7D !== null && APR[2].apy7D.toFixed(4) < 0
                     ? styles.redText
                     : styles.greenText
                 }`}
               >
-                {APR[2].apy7D.toFixed(4) > 0 ? "+" : ""}
-                {APR[2].apy7D.toFixed(4)}
+                {APR[2]?.apy7D?.toFixed(4) !== null
+                  ? APR[2]?.apy7D?.toFixed(4) > 0
+                    ? "+" + APR[2]?.apy7D?.toFixed(4)
+                    : "-"
+                  : "-"}
               </div>
             </div>
           </div>
           <div className={styles.topLosers}>
             <div className={styles.Heading}>
+            <div className={styles.tooltip2}>
+              <Image data-tooltip-id="topLosers" src={info}/>
+              <ReactTooltip
+                id="topLosers"
+                place="bottom"
+                content="Top 3 Losers in terms of APR"
+              />
+            </div>
               <span id="TG">Top Losers</span>
               <div className={styles.star}>
                 <Image src={loss} alt="X" />
@@ -167,13 +189,15 @@ const TopPools = () => {
               <div className={styles.slash}> /</div>
               <div
                 className={`${styles.changeAPR7D} ${
-                  L_APR[0].apy7D.toFixed(4) < 0
+                  L_APR[0].apy7D !== null && L_APR[1].apy7D.toFixed(4) < 0
                     ? styles.redText
                     : styles.greenText
                 }`}
               >
-                {L_APR[0].apy7D.toFixed(4) > 0 ? "+" : ""}
-                {L_APR[0].apy7D.toFixed(4)}
+                
+                {L_APR[0].apy7D === null || L_APR[0].apy7D === 0
+                  ? ""
+                  : L_APR[0].apy7D.toFixed(4)}
               </div>
             </div>
             <div className={styles.list2}>
@@ -198,11 +222,6 @@ const TopPools = () => {
                     : styles.greenText
                 }`}
               >
-                {L_APR[1].apy7D === null
-                  ? "-"
-                  : L_APR[1].apy7D.toFixed(4) > 0
-                  ? "+"
-                  : "-"}
                 {L_APR[1].apy7D === null || L_APR[1].apy7D === 0
                   ? ""
                   : L_APR[1].apy7D.toFixed(4)}
@@ -258,23 +277,64 @@ const TopPools = () => {
                   <th>Pool Name</th>
                   <th>Price</th>
                   <th>Name</th>
-                  
+                  <th>Chain</th>
                   <th>APY%</th>
                   <th>Last 30d</th>
                   <th>Last 7d</th>
+                  
                 </tr>
               </thead>
               <tbody className={styles.tablecells}>
                 {TAPR.map((pool, index) => (
                   <tr key={index}>
                     <td className={styles.tmargin}>{index + 1}</td>
-                    <td className={styles.tmargin}>{TAPR[index].symbol}</td>
-                    <td className={styles.tmargin}>{TAPR[index].tvlUSD}</td>
-                    <td className={styles.tmargin}>{TAPR[index].slug.toUpperCase()}</td>
-                    
-                    <td className={styles.tmargin}>{TAPR[index].apy.toFixed(2)}%</td>
-                    <td className={styles.tmargin}>{TAPR[index].apy30D}</td>
-                    <td className={styles.tmargin}>{TAPR[index].apy7D}</td>
+                    <td className={styles.tmargin}>
+                      <div>{TAPR[index].symbol.replace(/-/g, " / ")}</div>
+                    </td>
+
+                    <td className={styles.tmargin}>
+                      ${TAPR[index].tvlUSD.toLocaleString()}
+                    </td>
+                    <td className={styles.tmargin}>
+                      <div className={styles.fix}>
+                        <img
+                          className={styles.logoContainer}
+                          src={TAPR[index].logo}
+                          alt={TAPR[index].symbol}
+                        />
+
+                        <p>{TAPR[index].slug.toUpperCase()}</p>
+                      </div>
+                    </td>
+                    <td className={styles.tmargin}>
+                        <p>{TAPR[index].chain}</p>
+                    </td>
+
+                    <td className={styles.tmargin}>
+                      {TAPR[index].apy.toFixed(2)}%
+                    </td>
+                    <td
+                      className={`${styles.tmargin} ${
+                        TAPR[index].apy30D !== null && TAPR[index].apy30D < 0
+                          ? styles.redText
+                          : styles.greenText
+                      }`}
+                    >
+                      {TAPR[index].apy30D !== null
+                        ? TAPR[index].apy30D.toFixed(2) + "%"
+                        : "-"}
+                    </td>
+                    <td
+                      className={`${styles.tmargin} ${
+                        TAPR[index].apy7D !== null && TAPR[index].apy7D < 0
+                          ? styles.redText
+                          : styles.greenText
+                      }`}
+                    >
+                      {TAPR[index].apy7D !== null
+                        ? TAPR[index].apy7D.toFixed(2) + "%"
+                        : "-"}
+                    </td>
                   </tr>
                 ))}
               </tbody>
