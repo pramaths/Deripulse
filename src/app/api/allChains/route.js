@@ -5,8 +5,8 @@ let mongoClient;
 async function fetchDataFromDatabase() {
   const database = mongoClient.db("deri-pulse");
   const collection = database.collection("wholeData");
-  const cursor = await collection.find({}, { projection: { chainwise: 0 } });
-  const cachedData = cursor.toArray();
+  const cursor = await collection.find({});
+  const cachedData = await cursor.map((doc) => doc.chainwise).toArray();
   return cachedData;
 }
 
