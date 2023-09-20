@@ -20,7 +20,7 @@ function Navbar() {
           <ul className="nav-links">
             <li><a href="home">Home</a></li>
             <li><a href="topPools">Top pools</a></li>
-            <li><a href="Top chians">Top chains</a></li>
+            <li><a href="topChains">Top chains</a></li>
             <li><a href="Feed">Feed</a></li> 
           </ul>
         </div>
