@@ -16,7 +16,7 @@ export async function GET(req, res) {
     return res.status(405).end();
   }
   try {
-    mongoClient = await clientPromise;
+    mongoClient = await clientPromise();
     const responseData = await fetchDataFromDatabase();
 
     return NextResponse.json(responseData[0]);
