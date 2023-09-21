@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function GET(request,{ params }) {
   const chain = params.chains;
   try {
-    const backendResponse = await axios.get(`/api/db/`);
+    const backendResponse = await axios.get(`https://deripulse-giosbyba7-noveleader.vercel.app/api/db/`);
     const protocolData = backendResponse.data.arrProtocolData;
     const poolData = backendResponse.data.PoolData;
     const properChainName = chain.charAt(0).toUpperCase() + chain.slice(1);

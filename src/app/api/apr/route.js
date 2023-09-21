@@ -8,7 +8,7 @@ async function logo(slug) {
   return resp[0].logo;
 }
 export async function GET() {
-  res = await axios.get(`/api/db/`);
+  res = await axios.get(`https://deripulse-giosbyba7-noveleader.vercel.app/api/db/`);
 
   const poolData = res.data.PoolData;
   const flattenedPoolData = [].concat(...poolData);
