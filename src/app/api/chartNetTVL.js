@@ -18,7 +18,6 @@ const TVLChart = async (responseData) => {
     }
   }
 
-  console.log(timestampCount);
   let aggregated_data = {};
   for (const protocol of prot) {
     const chartData = protocol.chartTVL;
@@ -36,7 +35,6 @@ const TVLChart = async (responseData) => {
     }
   }
 
-  console.log(aggregated_data);
 
   const sortedKeys = Object.keys(aggregated_data).sort((a, b) => a - b);
 

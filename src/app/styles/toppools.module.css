@@ -13,6 +13,39 @@
   src: url("../../assests/FXDX/FXDXSemiBold.ttf");
 }
 
+@media (max-width: 768px) {
+  .part1 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .topGainers,
+  .topLosers,
+  .prediction {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .tablecells {
+    top: 0;
+  }
+}
+
+.tooltip {
+  position: absolute;
+  display: flex;
+  top: 1rem;
+  left: 21.62rem;
+  z-index: 1;
+}
+
+.tooltip2 {
+  position: absolute;
+  display: flex;
+  top: 0rem;
+  left: 20.4rem;
+  z-index: 1;
+}
+
 .semiHeading {
   position: relative;
   color: var(--2, #fff);
@@ -53,14 +86,14 @@
   font-style: normal;
   font-weight: 50;
   top: 0.5rem;
-  left: 2rem;
+  left: 1rem;
   line-height: normal;
   display: table-header-group;
   text-align: center;
 }
 
-.tmargin{
-  padding: 1rem;
+.tmargin {
+  padding: 0.5rem;
 }
 .tablecells {
   position: relative;
@@ -139,9 +172,26 @@
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.125rem;
-  letter-spacing: 0em;
+  letter-spacing: 0rem;
   text-align: left;
   font-family: FXDX-R;
+}
+
+.logoContainer {
+  border-radius: 50%;
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  overflow: hidden;
+  flex-shrink: 0;
+  top: 0rem;
+  left: -0.2rem;
+}
+
+.fix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .list {
@@ -154,6 +204,7 @@
   font-weight: 500;
   line-height: normal;
   font-family: FXDX-R;
+  align-items: center;
 }
 
 .list2 {
