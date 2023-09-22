@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 const APR = async () => {
-  const res = await axios.get("http://localhost:8000/api/db");
+  const res = await axios.get("https://deripulse.com/api/db/");
   const poolData = res.data.PoolData;
   const flattenedPoolData = [].concat(...poolData); 
   const sortedPoolData = flattenedPoolData
