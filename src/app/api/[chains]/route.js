@@ -5,11 +5,7 @@ import { NextResponse } from "next/server";
 export async function GET(request,{ params }) {
   const chain = params.chains;
   try {
-<<<<<<< HEAD:src/app/api/[chains].js
     const backendResponse = await axios.get("http://localhost:3000/api/db");
-=======
-    const backendResponse = await axios.get(`https://deripulse-app.vercel.app/api/db/`);
->>>>>>> 1ac46d0044fbd082a9484c5e0f9fe5bc6704a99e:src/app/api/[chains]/route.js
     const protocolData = backendResponse.data.arrProtocolData;
     const poolData = backendResponse.data.PoolData;
     const properChainName = chain.charAt(0).toUpperCase() + chain.slice(1);
