@@ -1,7 +1,11 @@
 const axios = require("axios");
 
 const TVLChart = async () => {
+<<<<<<< HEAD
   const res = await axios.get("http://localhost:3000/api/db");
+=======
+  const res = await axios.get(`https://deripulse-app.vercel.app/api/db/`);
+>>>>>>> 1ac46d0044fbd082a9484c5e0f9fe5bc6704a99e
   const prot = res.data.arrProtocolData;
 
   const timestampCount = {};

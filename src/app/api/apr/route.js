@@ -8,7 +8,8 @@ async function logo(slug) {
   return resp[0].logo;
 }
 export async function GET() {
-  const res = await axios.get("http://localhost:3000/api/db");
+  res = await axios.get(`https://deripulse-app.vercel.app/api/db/`);
+
   const poolData = res.data.PoolData;
   const flattenedPoolData = [].concat(...poolData);
   const sortedPoolData = flattenedPoolData
@@ -25,9 +26,11 @@ export async function GET() {
       tvlUSD: pool.tvlUsd,
       apy7D: pool.apyPct7D,
       apy30D: pool.apyPct30D,
-      apy:pool.apy,
+      apy: pool.apy,
       prediction: pool.predictions,
       logo: await logo(pool.project),
+      poolMeta: pool.poolMeta,
+      chain: pool.chain,
     };
     APR.push(data);
   }

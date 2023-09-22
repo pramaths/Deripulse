@@ -1,10 +1,15 @@
 import axios from "axios";
-import TVLChart from "./chartNetTVL";
+import TVLChart from "../chartNetTVL";
+import { NextResponse } from "next/server";
 
-export default async (req, res) => {
-  const chain = req.query.chains;
+export async function GET(request,{ params }) {
+  const chain = params.chains;
   try {
+<<<<<<< HEAD:src/app/api/[chains].js
     const backendResponse = await axios.get("http://localhost:3000/api/db");
+=======
+    const backendResponse = await axios.get(`https://deripulse-app.vercel.app/api/db/`);
+>>>>>>> 1ac46d0044fbd082a9484c5e0f9fe5bc6704a99e:src/app/api/[chains]/route.js
     const protocolData = backendResponse.data.arrProtocolData;
     const poolData = backendResponse.data.PoolData;
     const properChainName = chain.charAt(0).toUpperCase() + chain.slice(1);
@@ -25,9 +30,9 @@ export default async (req, res) => {
 
     responseData.push(chartData);
 
-    res.status(200).json(responseData); 
+    return NextResponse.json(responseData); 
   } catch (error) {
     console.error("An error occurred:", error);
-    res.status(500).json({ error: error.message }); 
+    return NextResponse.json({ error: error.message }); 
   }
 };
