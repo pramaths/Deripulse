@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 const TVLChart = async () => {
-  const res = await axios.get("http://localhost:8000/api/db");
+  const res = await axios.get("http://localhost:3000/api/db");
   const prot = res.data.arrProtocolData;
 
   const timestampCount = {};

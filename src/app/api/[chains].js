@@ -4,7 +4,7 @@ import TVLChart from "./chartNetTVL";
 export default async (req, res) => {
   const chain = req.query.chains;
   try {
-    const backendResponse = await axios.get("http://localhost:8000/api/db");
+    const backendResponse = await axios.get("http://localhost:3000/api/db");
     const protocolData = backendResponse.data.arrProtocolData;
     const poolData = backendResponse.data.PoolData;
     const properChainName = chain.charAt(0).toUpperCase() + chain.slice(1);
