@@ -35,7 +35,7 @@ const TopPools = () => {
 
     async function fetchAPR() {
       try {
-        const res = await axios.get("https://deripulse-app.vercel.app/api/apr");
+        const res = await axios.get("https://deripulse.com/api/apr");
         //console.log(res.data.slice(0, 3));
 
         setAPR(res.data.slice(0, 3));
