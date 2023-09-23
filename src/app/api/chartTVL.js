@@ -1,7 +1,9 @@
 const axios = require("axios");
 
 const TVLChart = async () => {
+
   const res = await axios.get(`https://deripulse.com/api/db/`);
+
   const prot = res.data.arrProtocolData;
 
   const timestampCount = {};
