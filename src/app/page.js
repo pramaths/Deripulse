@@ -37,68 +37,20 @@ import {
   ResponsiveContainer,
 } from "recharts";
 const chainSVGs = {
-  Ethereum: (
-    <Image
-      src={ethereum}
-      height={22}
-      width={22}
-      alt="Ethereum"
-      title="Ethereum"
-    />
-  ),
-  Arbitrum: (
-    <Image
-      src={arbitrum}
-      height={22}
-      width={22}
-      alt="Arbitrum"
-      title="Arbitrum"
-    />
-  ),
-  Avalanche: (
-    <Image
-      src={avalanche}
-      height={22}
-      width={22}
-      alt="Avalanche"
-      title="Avalanche"
-    />
-  ),
-  Algorand: (
-    <Image
-      src={algorand}
-      height={22}
-      width={22}
-      alt="Algorand"
-      title="Algorand"
-    />
-  ),
-  Aptos: <Image src={aptos} height={22} width={22} alt="Aptos" title="Aptos" />,
-  Base: <Image src={base} height={22} width={22} alt="Base" title="Base" />,
-  Bitcoincash: (
-    <Image
-      src={bitcoincash}
-      height={22}
-      width={22}
-      alt="Bitcoincash"
-      title="Bitcoincash"
-    />
-  ),
-  Boba: <Image src={boba} height={22} width={22} alt="Boba" title="Boba" />,
-  Celo: <Image src={celo} height={22} width={22} alt="Celo" title="Celo" />,
-  Cronos: (
-    <Image src={cronos} height={22} width={22} alt="Cronos" title="Cronos" />
-  ),
-  Fantom: (
-    <Image src={fantom} height={22} width={22} alt="Fantom" title="Fantom" />
-  ),
-  Aurora: (
-    <Image src={aurora} height={22} width={22} alt="Aurora" title="Aurora" />
-  ),
-  Solana: (
-    <Image src={solana} height={22} width={22} alt="Solana" title="Solana" />
-  ),
-  Sui: <Image src={sui} height={22} width={22} alt="Sui" title="Sui" />,
+  Ethereum: ethereum,
+  Arbitrum: arbitrum,
+  Avalanche: avalanche,
+  Algorand: algorand,
+  Aptos: aptos,
+  Base: base,
+  Bitcoincash: bitcoincash,
+  Boba: boba,
+  Celo: celo,
+  Cronos: cronos,
+  Fantom: fantom,
+  Aurora: aurora,
+  Solana: solana,
+  Sui: sui,
 };
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#d6455d"];
 export default function Home() {
@@ -122,26 +74,31 @@ export default function Home() {
   }, []);
   console.log(data);
   const [chartData, setChartData] = useState([]);
-  const [lineData, setlineData] = useState([]);useEffect(() => {
+  const [lineData, setlineData] = useState([]);
+  useEffect(() => {
     const lineChartData = [];
-  
+
     for (const protocol of data) {
       const chart = protocol.chartTVL;
-  
+
       for (const entry of chart) {
-        const timestamp = entry.date; 
-        const tvl = entry.totalLiquidityUSD;
-  
+        const timestamp = entry.date;
+        const tvl = entry.totalLiquidityUSD/10000000;
+
         if (timestamp !== null && timestamp !== undefined) {
-          const date = new Date(timestamp * 1000); 
+          const date = new Date(timestamp * 1000);
           const year = date.getFullYear();
-          if (year >= 2023) {
-            const formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${year}`;
-  
+          const month=date.getMonth();
+          if (year >= 2022 && year<2023) {
+            if(month>1){
+            const formattedDate = `${date.getDate()}-${
+              date.getMonth() + 1
+            }-${year}`;
+
             const existingEntry = lineChartData.find(
               (item) => item.name === formattedDate
             );
-  
+
             if (existingEntry) {
               existingEntry.tvl += tvl;
             } else {
@@ -149,10 +106,11 @@ export default function Home() {
             }
           }
         }
+        }
       }
     }
     lineChartData.sort((a, b) => new Date(b.name) - new Date(a.name));
-  
+
     setlineData(lineChartData);
   }, [data]);
   console.log("line", lineData);
@@ -192,6 +150,7 @@ export default function Home() {
     <div>
       <Navbar />
       <div className="layout">
+        <div className="home-contianer">
         <div className="box">
           <div className="group">
             <div className="marketsize">
@@ -220,9 +179,7 @@ export default function Home() {
                     <Pie
                       data={pieChartData}
                       dataKey="mcap"
-                      // cx={80}
-                      // cy={50}
-                      innerRadius={55}
+                      innerRadius={60}
                       outerRadius={90}
                       fill="#82ca9d"
                       isAnimationActive={true}
@@ -234,7 +191,21 @@ export default function Home() {
                         />
                       ))}
                     </Pie>
+                   
                   </PieChart>
+                  <PieChart width={180} height={185} style={{ position: 'absolute', top: 0, left: 0 }}>
+    <Pie
+      data={[{ name: 'Inner', value: 1 }]}
+      dataKey="value"
+      innerRadius={52} 
+      outerRadius={54}
+      fill="transperant"
+     
+      stroke="white" 
+      strokeWidth={2}
+
+    />
+  </PieChart>
                 </div>
                 <div className="exchanges">
                   {data
@@ -289,8 +260,8 @@ export default function Home() {
                     height={300}
                     margin={{
                       top: 5,
-                      right: 30,
-                      left: 10,
+                      right: 1,
+                      left: -15,
                       bottom: 5,
                     }}
                   >
@@ -301,7 +272,7 @@ export default function Home() {
                       dataKey="tvl"
                       data={lineData}
                       stroke="blue"
-                      strokeWidth={2}
+                      strokeWidth={3}
                       dot={false}
                     />
                   </LineChart>
@@ -336,7 +307,7 @@ export default function Home() {
             </div>
             {areachart.map((item, index) => (
               <div className="tablecells">
-                <div className="tablecell" key={index}>
+                <div className="tablecell" key={index.id}>
                   <div className="tablecell-rank">{index + 1}</div>
                   <div className="tablecell-name">
                     <div className="nameimg">
@@ -351,13 +322,19 @@ export default function Home() {
                     <div> {item.protocolname}</div>
                   </div>
                   <div className="tablecell-tvl">$ {format(item.tvl)}</div>
-                  <div className="tablecell-protocol" key={index}>
-                    {item.chains.map((chain, chainIndex) => (
-                      <div key={chainIndex} className="tool-tip">
-                        {chainSVGs[chain]}
-                      </div>
-                    ))}
-                  </div>
+                  <div className="tablecell-protocol" key={index.id}>
+  {item.chains.map((chain, chainIndex) => (
+    <div key={chainIndex} className="tool-tip">
+      <Image
+        src={chainSVGs[chain]}
+        alt={chain}
+        height={22}
+        width={22}
+        title={chain}
+      />
+    </div>
+  ))}
+</div>
                   <div className="tablecell-marketcap">
                     {item.mcap ? format(item.mcap) : "N/A"}
                   </div>
@@ -376,7 +353,7 @@ export default function Home() {
                       ? `${(item.volume24h / item.tvl).toFixed(2)}`
                       : "N/A"}
                   </div>
-                  <div className="tablecell-last30d" key={index}>
+                  <div className="tablecell-last30d">
                     <AreaChart width={150} height={60} data={item.chartTVL}>
                       <defs>
                         <linearGradient
@@ -434,6 +411,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

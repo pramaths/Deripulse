@@ -1,6 +1,18 @@
-.box {
+
+
+.layout{
+  display: flex;
+  flex-direction: column;
+
+}
+.home-contianer{
+  display: flex;
+  flex-direction: column;
   margin-left: 5rem;
   margin-right: 5rem;
+}
+
+.box {
   margin-top: 1rem;
   margin-bottom: 3rem;
   display: flex;
@@ -74,6 +86,7 @@ align-items: center;
 .data {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .exchanges {
@@ -170,8 +183,7 @@ align-items: center;
 }
 
 .div {
-  margin-left: 5rem;
-  margin-right: 5rem;
+ height: auto;
 }
 
 .datatable {
@@ -376,7 +388,7 @@ padding: 0.5rem;
 }
 .doughnut{
 position: relative;
-  margin-left: 0.5rem;
+  /* margin-left: 0.5rem; */
   justify-content: center;
 }
 
@@ -412,4 +424,39 @@ position: relative;
   margin-top: 1rem;
   color: #396ef7;
   width: 100%;
+}
+@media (max-width: 768px) {
+  .home-contianer{
+    display: flex;
+    flex-direction: column;
+    min-height: 200vh;
+margin: 1rem;
+  }
+  .layout{
+    display: flex;
+    flex-direction: column;
+  }
+  .box {
+ display: flex;
+ flex-direction: column;
+ margin: 0.5rem;
+ height: auto;
+  }
+.group{
+  flex-direction: column;
+}
+ .box  .marketsize{
+  width: 100%;
+}
+.box .chartcontainer{
+  width: 100%;
+}
+.div{
+  margin: 0.5rem;
+  margin-top: 25rem;
+}
+.tables{
+  scroll-behavior: auto;
+  scroll-margin: auto;
+}
 }
