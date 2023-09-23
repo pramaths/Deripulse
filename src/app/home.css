@@ -425,6 +425,14 @@ position: relative;
   color: #396ef7;
   width: 100%;
 }
+
+@media(min-width:1600px){
+  .home-contianer{
+    margin-left: 20rem;
+    margin-right: 20rem;
+  }
+}
+
 @media (max-width: 768px) {
   .home-contianer{
     display: flex;
