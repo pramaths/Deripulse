@@ -55,7 +55,7 @@ const TopPools = () => {
 
   if (APR.length !== 0) {
     return (
-      <div>
+      <div className={styles.resolution}>
         <div className={styles.part1}>
           <div className={styles.topGainers}>
             <div className={styles.tooltip}>
