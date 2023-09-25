@@ -35,7 +35,7 @@ const TopPools = () => {
 
     async function fetchAPR() {
       try {
-        const res = await axios.get("http://localhost:3000/api/apr");
+        const res = await axios.get("https://www.deripulse.com/api/apr");
         //console.log(res.data.slice(0, 3));
 
         setAPR(res.data.slice(0, 3));
@@ -59,7 +59,7 @@ const TopPools = () => {
         <div className={styles.part1}>
           <div className={styles.topGainers}>
             <div className={styles.tooltip}>
-              <Image data-tooltip-id="topGainers" src={info}/>
+              <Image data-tooltip-id="topGainers" src={info} />
               <ReactTooltip
                 id="topGainers"
                 place="bottom"
@@ -158,14 +158,14 @@ const TopPools = () => {
           </div>
           <div className={styles.topLosers}>
             <div className={styles.Heading}>
-            <div className={styles.tooltip2}>
-              <Image data-tooltip-id="topLosers" src={info}/>
-              <ReactTooltip
-                id="topLosers"
-                place="bottom"
-                content="Top 3 Losers in terms of APR"
-              />
-            </div>
+              <div className={styles.tooltip2}>
+                <Image data-tooltip-id="topLosers" src={info} />
+                <ReactTooltip
+                  id="topLosers"
+                  place="bottom"
+                  content="Top 3 Losers in terms of APR"
+                />
+              </div>
               <span id="TG">Top Losers</span>
               <div className={styles.star}>
                 <Image src={loss} alt="X" />
@@ -194,7 +194,6 @@ const TopPools = () => {
                     : styles.greenText
                 }`}
               >
-                
                 {L_APR[0].apy7D === null || L_APR[0].apy7D === 0
                   ? ""
                   : L_APR[0].apy7D.toFixed(4)}
@@ -281,7 +280,7 @@ const TopPools = () => {
                   <th>APY%</th>
                   <th>Last 30d</th>
                   <th>Last 7d</th>
-                  
+                  <th>Test</th>
                 </tr>
               </thead>
               <tbody className={styles.tablecells}>
@@ -307,7 +306,7 @@ const TopPools = () => {
                       </div>
                     </td>
                     <td className={styles.tmargin}>
-                        <p>{TAPR[index].chain}</p>
+                      <p>{TAPR[index].chain}</p>
                     </td>
 
                     <td className={styles.tmargin}>

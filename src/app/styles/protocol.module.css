@@ -1,0 +1,126 @@
+@font-face {
+  font-family: FXDX-R;
+  src: url("../../assests/FXDX/FXDXRegular.ttf");
+}
+
+@font-face {
+  font-family: FXDX-M;
+  src: url("../../assests/FXDX/FXDXMedium.ttf");
+}
+
+@font-face {
+  font-family: FXDX-B;
+  src: url("../../assests/FXDX/FXDXSemiBold.ttf");
+}
+
+.part1 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: auto;
+}
+
+.logo {
+  border-radius: 50%;
+}
+
+.name {
+  color: #fff;
+  font-family: FXDX-B;
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 3.5rem;
+  margin-top: 1rem;
+}
+
+.chains {
+  display: inline-flex;
+  margin-top: 1rem;
+}
+
+.chain {
+  flex-shrink: 0;
+  border-radius: 1.25rem;
+  background: #333;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+  margin-right: 0.5rem;
+}
+
+.info {
+  display: inline-flex;
+  margin-top: 1rem;
+}
+
+.urlClick {
+  top: 0.1rem;
+  left: -0.5rem;
+  position: relative;
+}
+
+.infobox {
+  flex-shrink: 0;
+  border-radius: 1.25rem;
+  background: #333;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+  text-align: justify;
+}
+
+.part2 {
+  display: flex;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.tvlBox {
+  margin-right: -7.4rem;
+  margin-top: 3rem;
+  width: 26.625rem;
+  height: 32.9375rem;
+  flex-shrink: 0;
+  border-radius: 1.25rem;
+  background: #181818;
+}
+.tvlChart {
+  display: flex;
+  width: 47.75rem;
+  margin: -12.8rem -9.8rem 0 10rem;
+  height: 17.1875rem;
+  flex-shrink: 0;
+  border-radius: 1.25rem;
+  background: #181818;
+}
+
+.tvlStats {
+  display: flex;
+  width: 47.75rem;
+  height: 13.875rem;
+  margin: 22rem 0 0 -38rem;
+  flex-shrink: 0;
+  border-radius: 1.25rem;
+  background: #181818;
+}
+
+.part3 {
+  display: flex;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.pools {
+  margin: 1.25rem auto;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  /* width: 76.25rem; */
+  height: 29.3125rem;
+  flex-shrink: 1;
+  border-radius: 1.25rem;
+  background: #181818;
+}
