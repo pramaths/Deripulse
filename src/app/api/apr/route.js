@@ -8,7 +8,7 @@ async function logo(slug) {
   return resp[0].logo;
 }
 export async function GET() {
-  res = await axios.get(`https://deripulse.com/api/db/`);
+  res = await axios.get(`http://localhost:3000/api/db/`);
 
   const poolData = res.data.PoolData;
   const flattenedPoolData = [].concat(...poolData);
