@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Navbar from "./components/Navbar";
-import "./home.css";
+import "./styles/home.css";
 import rank from "../assests/rank.svg";
 import dydx from "../assests/dydx.svg";
 import search from "../assests/search.svg";
