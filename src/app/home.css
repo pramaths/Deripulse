@@ -19,9 +19,6 @@
 }
 
 .box .group {
-  height: 300px;
-  left: 0;
-  top: 0;
   width: 100%;
   display: flex;
   gap: 3rem;
@@ -438,7 +435,8 @@ position: relative;
     display: flex;
     flex-direction: column;
     min-height: 200vh;
-margin: 1rem;
+margin: 0.5rem; 
+overflow: auto;
   }
   .layout{
     display: flex;
@@ -449,6 +447,7 @@ margin: 1rem;
  flex-direction: column;
  margin: 0.5rem;
  height: auto;
+ position: sticky;
   }
 .group{
   flex-direction: column;
@@ -460,11 +459,80 @@ margin: 1rem;
   width: 100%;
 }
 .div{
-  margin: 0.5rem;
-  margin-top: 25rem;
+  margin: 0rem;
+overflow-x: scroll;
 }
-.tables{
+/* .tables{
   scroll-behavior: auto;
   scroll-margin: auto;
+} */
+.searchbar {
+  border: 2px solid rgb(89, 85, 85);
+  border-radius: 0.5rem;
+  width: 20%;
+}
+.search {
+  outline: none;
+  border: none;
+  background-color: inherit;
+  align-items: center;
+  justify-content: center;
+}
+
+.search input {
+  border: none;
+  outline: none;
+  background-color: inherit;
+  margin: 0.7rem;
+}
+
+.search img {
+  margin-top: 0.7rem;
+  margin-left: 0.5rem;
+}
+
+.tmainhead {
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+.datatable{
+  overflow-x: auto;
+  min-width: 1000px;
+  padding: 0;
+}
+.table{
+  overflow-x:auto ;
+}
+.tables {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 0.5rem;
+  background-color: #201f1f;
+  margin-bottom: 1rem;
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
+}
+.tablecells {
+  margin-left: 0rem;
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem;
+}
+.thead-rank{
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1000;
+}
+.thead-name{
+  position: sticky;
+  position: -webkit-sticky;
+  top: 100;
+  z-index: 1000;
 }
 }

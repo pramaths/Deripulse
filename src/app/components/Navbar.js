@@ -6,7 +6,7 @@ import discord from '../../assests/discord.svg';
 import medium from "../../assests/medium.svg";
 import telegram from "../../assests/telegram.svg";
 import Image from 'next/image';
-function Navbar() {
+ export default function Navbar() {
   return (
     <div className='contianer'>
     <div className='nav-container'>
@@ -36,4 +36,3 @@ function Navbar() {
   );
 }
 
-export default Navbar;
