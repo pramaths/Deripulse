@@ -7,6 +7,7 @@ import dydx from "../assests/dydx.svg";
 import search from "../assests/search.svg";
 import candle from "../assests/candle.svg";
 import order from "../assests/order.svg";
+import Dough from "./components/Doughnut"
 import react, { useEffect, useState } from "react";
 import {
   XAxis,
@@ -43,8 +44,7 @@ export default function Home() {
       })
       .catch((error) => console.error("Error:", error));
   }, []);
-  console.log(data);
-  const [chartData, setChartData] = useState([]);
+
   const [lineData, setlineData] = useState([]);
   useEffect(() => {
     const lineChartData = [];
@@ -81,7 +81,6 @@ export default function Home() {
       }
     }
     lineChartData.sort((a, b) => new Date(b.name) - new Date(a.name));
-
     setlineData(lineChartData);
   }, [data]);
   console.log("line", lineData);
@@ -97,13 +96,12 @@ export default function Home() {
         mcap: totalMarketCapOthers,
       },
     ];
-
     setPieChartData(pieData);
   }, [data]);
   useEffect(() => {
     const dataWithFirst30Days = data.map((protocol) => ({
       ...protocol,
-      chartTVL: protocol.chartTVL.slice(0, 30),
+      chartTVL: protocol.chartTVL.slice(0, 30).reverse(),
     }));
     setAreachart(dataWithFirst30Days);
   }, [data]);
@@ -116,7 +114,6 @@ export default function Home() {
       return value;
     }
   };
-  console.log("lol", chartData);
   return (
     <div>
       <Navbar />
@@ -146,48 +143,7 @@ export default function Home() {
                 </div>
                 <div className="data">
                   <div className="doughnut">
-                    {/* <ResponsiveContainer> */}
-
-                    <PieChart width={180} height={185}>
-                      <Pie
-                        data={pieChartData}
-                        dataKey="mcap"
-                        innerRadius={60}
-                        outerRadius={90}
-                        fill="#82ca9d"
-                        isAnimationActive={true}
-                      >
-                        {pieChartData.map((entry, index) => (
-                          <Cell
-                            key={`cell-${index}`}
-                            fill={COLORS[index % COLORS.length]}
-                          />
-                        ))}
-                      </Pie>
-                    </PieChart>
-                    <PieChart
-                      width={180}
-                      height={185}
-                      style={{ position: "absolute", top: 0, left: 0 }}
-                    >
-                      <Pie
-                        data={[
-                          { name: "Inner", value: 1 },
-                          { name: "Inner", value: 1 },
-                          { name: "Inner", value: 1 },
-                          { name: "Inner", value: 1 },
-                          { name: "Inner", value: 1 },
-                        ]}
-                        dataKey="value"
-                        innerRadius={52}
-                        outerRadius={54}
-                        fill="transperant"
-                        paddingAngle={8}
-                        stroke="white"
-                        strokeWidth={2}
-                      />
-                    </PieChart>
-                    {/* </ResponsiveContainer> */}
+                  <Dough pieChartData={pieChartData} />
                   </div>
                   <div className="exchanges">
                     {data
@@ -263,17 +219,16 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="div">
-            <div className="tableheader">
-              <div className="tmainhead">Crypto Derivatives</div>
-              <div className="searchbar">
-                <div className="search">
-                  <Image src={search} alt="search" />
-                  <input placeholder="Search (eg. dydx, Gmx)" />{" "}
-                </div>
+          <div className="tableheader">
+            <div className="tmainhead">Crypto Derivatives</div>
+            <div className="searchbar">
+              <div className="search">
+                <Image src={search} alt="search" />
+                <input placeholder="Search (eg. dydx, Gmx)" />{" "}
               </div>
             </div>
-
+          </div>
+          <div className="div">
             <div className="datatable">
               <div className="tables">
                 <div className="table">
