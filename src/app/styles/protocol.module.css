@@ -13,6 +13,11 @@
   src: url("../../assests/FXDX/FXDXSemiBold.ttf");
 }
 
+@font-face {
+  font-family: Inter;
+  src: url("../../assests/Inter/Inter-VariableFont_slnt\,wght.ttf");
+}
+
 .part1 {
   position: relative;
   display: flex;
@@ -28,7 +33,7 @@
 
 .name {
   color: #fff;
-  font-family: FXDX-B;
+  font-family: Inter;
   font-size: 2.5rem;
   font-style: normal;
   font-weight: 600;
@@ -80,17 +85,19 @@
 .tvlBox {
   margin-right: -7.4rem;
   margin-top: 3rem;
-  width: 26.625rem;
-  height: 32.9375rem;
+  min-width: 26.625rem;
+  min-height: 32.9375rem;
+  width: auto;
+  height: auto;
   flex-shrink: 0;
   border-radius: 1.25rem;
   background: #181818;
 }
 .tvlChart {
-  display: flex;
+  max-height: 50%;
   width: 47.75rem;
-  margin: -12.8rem -9.8rem 0 10rem;
-  height: 17.1875rem;
+  margin: -22.8rem -9.8rem 0 10rem;
+  height: auto;
   flex-shrink: 0;
   border-radius: 1.25rem;
   background: #181818;
@@ -115,12 +122,182 @@
 
 .pools {
   margin: 1.25rem auto;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  /* width: 76.25rem; */
+  width: 76.25rem;
   height: 29.3125rem;
   flex-shrink: 1;
   border-radius: 1.25rem;
   background: #181818;
+}
+
+.boxhead {
+  position: relative;
+  margin: 2.19rem 0 0 1.8rem;
+  color: #858585;
+  font-family: Inter;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.tvl {
+  color: #fff;
+  font-family: Inter;
+  margin: 1rem 0 0 1.8rem;
+  font-size: 2.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.tvlline {
+  width: auto;
+  height: 0.0625rem;
+  background: #2e2e2e;
+  margin-top: 1.25rem;
+}
+
+.chainTvls {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(10%, auto);
+  margin: 1.25rem 0 0 1rem;
+  max-height: 25%;
+  min-height: 10%;
+}
+
+
+.pchain {
+  display: flex;
+  width: auto;
+  color: #a9a9a9;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 1.12rem;
+}
+
+.pchaintvl {
+  display: flex;
+  margin: 0rem 0rem 0rem 0rem;
+  justify-content: center;
+  text-align: left;
+  color: #fff;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.token {
+  display: grid;
+  gap: 16rem;
+  row-gap: 2rem;
+  color: #a9a9a9;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 2rem 1.81rem 1.81rem;
+}
+
+.lptoken {
+  color: #fff;
+  margin: 1rem 0rem 1rem 0rem;
+  font-family: Inter;
+  font-size: small;
+}
+
+.symbol {
+  color: #22c761;
+  font-family: Inter;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0.5rem 0rem 0rem 0rem;
+}
+
+.change_r {
+  color: #f85032;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0.5rem 0rem 0rem 0rem;
+}
+
+.change_g {
+  color: #22c761;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0.5rem 0rem 0rem 0rem;
+}
+
+.chartName {
+  width: 2rem;
+  height: 2rem;
+  color: var(--2, #fff);
+  font-family: Inter;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.neon {
+  background-color: #333;
+  color: #ffffff;
+  border: 1px solid #666;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+  box-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.2);
+}
+
+.charttext {
+  margin: 1.75rem 0rem 0rem 1.25rem;
+  font-family: Inter;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  z-index: 1rem;
+}
+
+.statsgrid {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: 0rem;
+  column-gap: 30rem;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 4.5rem 0rem 0rem -9rem;
+}
+.tvllist {
+  margin: 4.44rem 0rem 0rem -9.4rem;
+  color: #d8d8d8;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.ATH {
+  color: #22c761;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.ATL {
+  color: #f85032;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }

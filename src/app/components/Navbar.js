@@ -19,9 +19,9 @@ function Navbar() {
         <div  className=''>
           <ul className="nav-links">
             <li><a href="/">Home</a></li>
-            <li><a href="topPools">Top pools</a></li>
-            <li><a href="topChains">Top chains</a></li>
-            <li><a href="Feed">Feed</a></li> 
+            <li><a href="/topPools">Top pools</a></li>
+            <li><a href="/topChains">Top chains</a></li>
+            <li><a href="/Feed">Feed</a></li> 
           </ul>
         </div>
       </nav>
