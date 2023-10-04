@@ -3,7 +3,6 @@ import Image from "next/image";
 import Navbar from "./components/Navbar";
 import "./styles/home.css";
 import rank from "../assests/rank.svg";
-import dydx from "../assests/dydx.svg";
 import search from "../assests/search.svg";
 import candle from "../assests/candle.svg";
 import order from "../assests/order.svg";
@@ -12,11 +11,6 @@ import react, { useEffect, useState } from "react";
 import {
   XAxis,
   YAxis,
-  PieChart,
-  Pie,
-  Cell,
-  LineChart,
-  Line,
   AreaChart,
   Area,
   ResponsiveContainer,
@@ -29,6 +23,8 @@ export default function Home() {
   const [data, setdata] = useState([]);
   const [pieChartData, setPieChartData] = useState([]);
   const [areachart, setAreachart] = useState([]);
+  const[tvl,settvl]=useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   useEffect(() => {
     fetch("/api/db")
       .then((response) => {
@@ -41,6 +37,7 @@ export default function Home() {
       })
       .then((data) => {
         setdata(data.arrProtocolData);
+        settvl(data.sumTVL)
       })
       .catch((error) => console.error("Error:", error));
   }, []);
@@ -60,7 +57,7 @@ export default function Home() {
           const date = new Date(timestamp * 1000);
           const year = date.getFullYear();
           const month = date.getMonth();
-          if (year >= 2022 && year < 2023) {
+          if (year >= 2022 && year < 2024) {
             if (month > 1) {
               const formattedDate = `${date.getDate()}-${
                 date.getMonth() + 1
@@ -83,14 +80,13 @@ export default function Home() {
     lineChartData.sort((a, b) => new Date(b.name) - new Date(a.name));
     setlineData(lineChartData);
   }, [data]);
-  console.log("line", lineData);
   useEffect(() => {
-    const sortedData = [...data].sort((a, b) => b.mcap - a.mcap);
+    const sortedData = [...data].sort((a, b) => b.tvl - a.tvl);
     const totalMarketCapOthers = sortedData
       .slice(4)
       .reduce((total, dex) => total + dex.mcap, 0);
     const pieData = [
-      ...sortedData.slice(0, 4),
+      ...data.slice(0, 4),
       {
         protocolname: "Others",
         mcap: totalMarketCapOthers,
@@ -101,11 +97,22 @@ export default function Home() {
   useEffect(() => {
     const dataWithFirst30Days = data.map((protocol) => ({
       ...protocol,
-      chartTVL: protocol.chartTVL.slice(0, 30).reverse(),
+      chartTVL: protocol.chartTVL.slice(-30),
     }));
     setAreachart(dataWithFirst30Days);
   }, [data]);
+   const filteredData = data.filter((protocol) => 
+    protocol.protocolname.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
   const format = (value) => {
+
+    if(value>1000000000){
+      return `${(value/10000000).toFixed(2)}B`
+    }
     if (value >= 1000000) {
       return `${(value / 1000000).toFixed(2)}M`;
     } else if (value >= 1000) {
@@ -114,6 +121,8 @@ export default function Home() {
       return value;
     }
   };
+  console.log(pieChartData)
+  console.log('hii')
   return (
     <div>
       <Navbar />
@@ -137,10 +146,12 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="ranking">
-                  <Image className="group-2" alt="Group" src={rank} />
-                  <div className="text-wrapper-8">$390,821,262</div>
-                  <Image className="icon" alt="Icon" src={dydx} />
-                </div>
+  <Image className="group-2" alt="Group" src={rank} />
+  <div className="text-wrapper-8">${data.length > 0 ? format(data[0].tvl) : ''}</div>
+  <Image className="icon" alt="Icon" src={data.length > 0 ? data[0].logo : ''}
+  width={22}
+  height={22} />
+</div>
                 <div className="data">
                   <div className="doughnut">
                   <Dough pieChartData={pieChartData} />
@@ -178,7 +189,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="minih">
-                  <div className="tvlprice">$37.903billion</div>
+                  <div className="tvlprice">${format(tvl)}</div>
                   <div className="pagination">
                     <div className="panigation">
                       <div className="text-wrapper-6">1d</div>
@@ -192,29 +203,42 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="linechart">
-                  <ResponsiveContainer width="100%" height={200}>
-                    <LineChart
-                      width={500}
-                      height={300}
-                      margin={{
-                        top: 5,
-                        right: 1,
-                        left: -15,
-                        bottom: 5,
-                      }}
-                    >
-                      <XAxis dataKey="name" />
-                      <YAxis />
-                      <Line
-                        type="monotone"
-                        dataKey="tvl"
-                        data={lineData}
-                        stroke="blue"
-                        strokeWidth={3}
-                        dot={false}
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
+                <ResponsiveContainer width="100%" height={200}>
+  <AreaChart
+    width={500}
+    height={300}
+    margin={{
+      top: 5,
+      right: 1,
+      left: -15,
+      bottom: 5,
+    }}
+  >
+    <defs>
+      <linearGradient
+        id="chartGradient"
+        x1="0"
+        y1="0"
+        x2="0"
+        y2="1"
+      >
+        <stop offset="5%" stopColor="red" stopOpacity={0.8} />
+        <stop offset="95%" stopColor="#d6455d" stopOpacity={0.8} />
+      </linearGradient>
+    </defs>
+    <XAxis dataKey="name" />
+    <YAxis />
+    <Area
+      type="monotone"
+      dataKey="tvl"
+      data={lineData}
+      stroke="red"
+      fill="url(#chartGradient)"
+      strokeWidth={0.9}
+      dot={false}
+    />
+  </AreaChart>
+</ResponsiveContainer>
                 </div>
               </div>
             </div>
@@ -224,7 +248,11 @@ export default function Home() {
             <div className="searchbar">
               <div className="search">
                 <Image src={search} alt="search" />
-                <input placeholder="Search (eg. dydx, Gmx)" />{" "}
+                <input 
+            placeholder="Search (eg. dydx, Gmx)"
+            value={searchTerm}
+            onChange={handleSearchChange} 
+          />
               </div>
             </div>
           </div>
@@ -242,10 +270,10 @@ export default function Home() {
                   <div className="thead-last30">Last 30d</div>
                 </div>
               </div>
-              {areachart.map((item, index) => (
+              {filteredData.map((item, index) => (
                 <div className="tablecells">
                   <div className="tablecell" key={index.id}>
-                    <div className="tablecell-rank">{index + 1}</div>
+                    <div className="tablecell-rank">{item.rank}</div>
                     <div className="tablecell-name">
                       <div className="nameimg">
                         <Image
@@ -258,7 +286,7 @@ export default function Home() {
                       </div>
                       <div> {item.protocolname}</div>
                     </div>
-                    <div className="tablecell-tvl">$ {format(item.tvl)}</div>
+                    <div className="tablecell-tvl">${format(item.tvl)}</div>
                     <div className="tablecell-protocol" key={index.id}>
                       {item.chains.map((chain, chainIndex) => (
                         <div key={chainIndex} className="tool-tip">
@@ -291,7 +319,8 @@ export default function Home() {
                         : "N/A"}
                     </div>
                     <div className="tablecell-last30d">
-                      <AreaChart width={150} height={60} data={item.chartTVL}>
+                     <ResponsiveContainer width="100%" height="100%">
+                      <AreaChart  height={60} data={item.chartTVL}>
                         <defs>
                           <linearGradient
                             id={`gradientFill${index}`}
@@ -341,6 +370,7 @@ export default function Home() {
                           fillOpacity={0.8}
                         />
                       </AreaChart>
+                   </ResponsiveContainer>
                     </div>
                   </div>
                 </div>
