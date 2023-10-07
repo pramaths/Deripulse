@@ -29,9 +29,9 @@ import { FaBars } from 'react-icons/fa';
         </div>
           <ul className={`nav-links ${isMenuOpen ? 'open' : 'closed'}`}>
             <li><a href="/">Home</a></li>
-            <li><a href="topPools">Top pools</a></li>
-            <li><a href="topChains">Top chains</a></li>
-            <li><a href="Feed">Feed</a></li> 
+            <li><a href="/topPools">Top pools</a></li>
+            <li><a href="/topChains">Top chains</a></li>
+            <li><a href="/Feed">Feed</a></li> 
           </ul>
         </nav>
         <div className='nav-social'>

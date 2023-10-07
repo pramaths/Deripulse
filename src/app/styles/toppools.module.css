@@ -87,6 +87,8 @@
 .textbar {
   position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
   color: #adadad;
   font-family: FXDX-R;
   font-size: 1rem;

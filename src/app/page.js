@@ -42,6 +42,9 @@ export default function Home() {
       .catch((error) => console.error("Error:", error));
   }, []);
 
+  console.log(data);
+  //const [chartData, setChartData] = useState([]);
+
   const [lineData, setlineData] = useState([]);
   useEffect(() => {
     const lineChartData = [];
@@ -121,8 +124,7 @@ export default function Home() {
       return value;
     }
   };
-  console.log(pieChartData)
-  console.log('hii')
+
   return (
     <div>
       <Navbar />
