@@ -15,8 +15,8 @@ const dough = ({ pieChartData }) => {
         <Pie
           data={pieChartData}
           dataKey="mcap"
-          innerRadius={55}
-          outerRadius={75}
+          innerRadius={45}
+          outerRadius={78}
           // cx={90}
           // cy={90}
           fill="#82ca9d"
