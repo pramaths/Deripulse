@@ -1,0 +1,21 @@
+/* Dough.css */
+
+/* Define the pulsating animation */
+@keyframes pulse {
+    0% {
+      fill-opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      fill-opacity: 0.5;
+      transform: scale(0.8);
+    }
+    100% {
+      fill-opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .recharts-pie-sector {
+    animation: pulse 2s infinite; /* Adjust the duration or other properties as needed */
+  }
+  
