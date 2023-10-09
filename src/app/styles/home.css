@@ -8,8 +8,8 @@
 .home-contianer{
   display: flex;
   flex-direction: column;
-  margin-left: 5rem;
-  margin-right: 5rem;
+  margin-left: 5%;
+  margin-right: 5%;
   max-height: 90vh;
   scrollbar-width: none;
   ::-webkit-scrollbar {
@@ -283,6 +283,9 @@ justify-content: center;
 .tablecell-protocol{
   width: 15%;
   display: flex;
+  flex-wrap: wrap; 
+  align-items:center;
+  margin-top: 2rem;
 }
 .tablecell-protocol img{
   margin-right: 0.5rem;

@@ -54,13 +54,13 @@ export default function Home() {
 
       for (const entry of chart) {
         const timestamp = entry.date;
-        const tvl = entry.totalLiquidityUSD / 10000000;
+        const tvl = entry.totalLiquidityUSD / 1000000000;
 
         if (timestamp !== null && timestamp !== undefined) {
           const date = new Date(timestamp * 1000);
           const year = date.getFullYear();
           const month = date.getMonth();
-          if (year >= 2022 && year < 2024) {
+          if (year >= 2021 && year < 2023) {
             if (month > 1) {
               const formattedDate = `${date.getDate()}-${
                 date.getMonth() + 1
@@ -87,12 +87,12 @@ export default function Home() {
     const sortedData = [...data].sort((a, b) => b.tvl - a.tvl);
     const totalMarketCapOthers = sortedData
       .slice(4)
-      .reduce((total, dex) => total + dex.mcap, 0);
+      .reduce((total, dex) => total + dex.tvl, 0);
     const pieData = [
       ...data.slice(0, 4),
       {
         protocolname: "Others",
-        mcap: totalMarketCapOthers,
+        tvl: totalMarketCapOthers,
       },
     ];
     setPieChartData(pieData);
@@ -114,17 +114,23 @@ export default function Home() {
   const format = (value) => {
 
     if(value>1000000000){
-      return `${(value/10000000).toFixed(2)}B`
+      return `${(value/1000000000).toFixed(2)}B`
     }
     if (value >= 1000000) {
       return `${(value / 1000000).toFixed(2)}M`;
-    } else if (value >= 1000) {
+    } 
+    if (typeof value === 'number' && value <= 1000) {
+      return `${value.toFixed(2)}`;
+  }
+    else if (value >= 1000) {
       return `${(value / 1000).toFixed(2)}K`;
-    } else {
+    } 
+    else {
       return value;
     }
   };
-
+console.log("piechartdata",pieChartData)
+console.log(tvl)
   return (
     <div>
       <Navbar />
@@ -186,7 +192,7 @@ export default function Home() {
                       <Image src={order} alt="asc" />
                     </div>
                     <div className="candle">
-                      <Image src={candle} alt="cnadle" />
+                      <Image src={candle} alt="candle" />
                     </div>
                   </div>
                 </div>
