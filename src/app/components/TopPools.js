@@ -9,6 +9,17 @@ import graphdown from "../../assests/graphdown.svg";
 import graphup from "../../assests/graphup.svg";
 import info from "../../assests/info.svg";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1
+};
 
 const TopPools = () => {
   const [TAPR, setTAPR] = useState([]);
@@ -57,6 +68,7 @@ const TopPools = () => {
     return (
       <div className={styles.resolution}>
         <div className={styles.part1}>
+  
           <div className={styles.topGainers}>
             <div className={styles.tooltip}>
               <Image data-tooltip-id="topGainers" src={info} />
@@ -265,6 +277,7 @@ const TopPools = () => {
               AVG APY - {avgAPR.toFixed(4)}%
             </div>
           </div>
+    
         </div>
         <div className={styles.part2}>
           <div className={styles.topPools}>Top Pools</div>
@@ -280,7 +293,6 @@ const TopPools = () => {
                   <th>APY%</th>
                   <th>Last 30d</th>
                   <th>Last 7d</th>
-                  <th>Test</th>
                 </tr>
               </thead>
               <tbody className={styles.tablecells}>

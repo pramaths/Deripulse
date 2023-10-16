@@ -8,6 +8,8 @@ import arrowup from "../../assests/arrowup.svg";
 import link from "../../assests/link.svg";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import 'keen-slider/keen-slider.min.css'
+import { useKeenSlider } from 'keen-slider/react'
 import {
   ResponsiveContainer,
   LineChart,
@@ -20,6 +22,9 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+function getChainSVGUrl(chainName) {
+  return `/chains/${chainName.toLowerCase()}.svg`;
+}
 const Protocol = (props) => {
   const protocol = props.props;
   const [Logo, setLogo] = useState();
@@ -76,7 +81,7 @@ const Protocol = (props) => {
       ATL = result.ATL;
     }
     return (
-      <div>
+      <div className="protocolcontainer">
         <SkeletonTheme baseColor="#202020" highlightColor="#444">
           <div className={styles.part1}>
             <div>
@@ -91,9 +96,19 @@ const Protocol = (props) => {
             <div className={styles.chains}>
               {Filtereddata.chains.map((chain, index) => (
                 <div key={index} className={styles.chain}>
+               <div>
+               <Image
+                            src={getChainSVGUrl(chain)}
+                            alt={chain}
+                            height={22}
+                            width={22}
+                            title={chain}
+                          />
+               </div>
+               
                   {chain}
                 </div>
-              ))}
+              ))}  
             </div>
 
             <div className={styles.info}>
@@ -121,8 +136,8 @@ const Protocol = (props) => {
               <div className={styles.chainTvls}>
                 {Object.entries(Filtereddata.chainTvls).map(
                   ([chain, tvl], index) => (
-                    <div>
-                      <div className={styles.pchain}>{chain} TVL: </div>
+                    <div className={styles.chaintvldata}>
+                      <div className={styles.pchain}>{chain} TVL </div>
 
                       <div className={styles.pchaintvl}>
                         ${" "}
@@ -215,7 +230,7 @@ const Protocol = (props) => {
                           <div className={styles.neon}>
                             <p>Date: {formattedDate}</p>
                             <p>
-                              Total Liquidity USD: $
+                              Total Liquidity USD $
                               {parseFloat(
                                 dataPoint.totalLiquidityUSD
                               ).toLocaleString("en-US", {

@@ -285,7 +285,7 @@ justify-content: center;
   display: flex;
   flex-wrap: wrap; 
   align-items:center;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 .tablecell-protocol img{
   margin-right: 0.5rem;

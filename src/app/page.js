@@ -8,6 +8,7 @@ import candle from "../assests/candle.svg";
 import order from "../assests/order.svg";
 import Dough from "./components/Doughnut"
 import react, { useEffect, useState } from "react";
+
 import {
   XAxis,
   YAxis,
@@ -41,9 +42,6 @@ export default function Home() {
       })
       .catch((error) => console.error("Error:", error));
   }, []);
-
-  console.log(data);
-  //const [chartData, setChartData] = useState([]);
 
   const [lineData, setlineData] = useState([]);
   useEffect(() => {

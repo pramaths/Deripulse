@@ -80,11 +80,12 @@
   height: auto;
   justify-content: center;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .tvlBox {
   margin-right: -7.4rem;
-  margin-top: 3rem;
+
   min-width: 26.625rem;
   min-height: 32.9375rem;
   width: auto;
@@ -94,14 +95,16 @@
   background: #181818;
 }
 .tvlChart {
-  max-height: 50%;
+  min-height: 60%;
   width: 47.75rem;
   margin: -22.8rem -9.8rem 0 10rem;
   height: auto;
   flex-shrink: 0;
   border-radius: 1.25rem;
   background: #181818;
+  margin-top: -20rem;
 }
+
 
 .tvlStats {
   display: flex;
@@ -158,12 +161,18 @@
 }
 
 .chainTvls {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
+
   grid-auto-rows: minmax(10%, auto);
-  margin: 1.25rem 0 0 1rem;
+  /* margin: 1.25rem 0 0 1rem; */
+  padding: 1rem;
+  padding-bottom: 0.1rem;
   max-height: 25%;
   min-height: 10%;
+  justify-content: space-between;
+  align-items: center;
+ 
 }
 
 
@@ -176,7 +185,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin: 1.12rem;
+  margin: 0.95rem;
+  margin-left: 0;
 }
 
 .pchaintvl {
@@ -195,10 +205,13 @@
 .token {
   display: grid;
   gap: 16rem;
-  row-gap: 2rem;
+  row-gap: 0.2222rem;
   color: #a9a9a9;
   grid-template-columns: repeat(2, 1fr);
   margin: 2rem 1.81rem 1.81rem;
+  padding: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .lptoken {
@@ -300,4 +313,90 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+
+.chaintvldata{
+  display: flex;
+align-items: center;
+padding-left: 1rem;
+padding-right: 1rem;
+/* flex-direction: column; */
+justify-content: space-between;
+width: 100%;
+}
+
+
+@media only screen and (max-width: 768px) { 
+ 
+.tvlChart{
+  display: flex;
+  margin-top: 5rem;
+}
+  .name {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-top: 0.5rem;
+  }
+
+  .chains, .info {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .chain, .infobox {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .part2, .part3 {
+    flex-direction: column;
+  }
+
+  .tvlBox, .tvlChart, .tvlStats {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  
+  .statsgrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    margin: 2rem 0 0 0;
+  }
+  
+  .tvllist {
+    margin: 2rem 0 0 0;
+  }
+}
+
+@media only screen and (max-width: 480px) { 
+  /* Styles for mobile phones */
+  .name {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .chain, .infobox {
+    padding: 0.25rem 0.5rem;
+  }
+
+  .pools {
+    width: 90%;
+    margin: 1rem auto;
+  }
+  .tvlBox, .tvlChart, .tvlStats {
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+  .tvlBox {
+    margin-right: -5.4rem;
+    margin-left: -5.4rem;
+  
+    min-width: 5.625rem;
+    min-height: 32.9375rem;
+    width: auto;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 1.25rem;
+    background: #181818;
+  }
 }

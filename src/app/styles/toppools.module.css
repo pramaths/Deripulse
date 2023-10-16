@@ -34,6 +34,8 @@
   background-color: #000000;
   height: max-content;
   width: max-content;
+  height: auto;
+  margin: 3rem;
 }
 
 .tooltip {
