@@ -13,7 +13,7 @@ async function fetchDataFromDatabase() {
 export async function GET(req, res) {
   console.log("here");
   if (req.method !== "GET") {
-    return res.status(405).end();
+    return new NextResponse(405); 
   }
   try {
     mongoClient = await clientPromise;
