@@ -166,24 +166,34 @@ useEffect(() => {
                     </div>
 
                     <div className="data">
-                   
-                      {/* <div className="exchanges">
-                        {data
-                          ? data.slice(0, 4).map((name, index) => (
-                              <div key={index} className="text-wrapper">
-                                <Image
-                                  className="mark"
-                                  alt="Mark"
-                                  src={name.logo}
-                                  width={15}
-                                  height={15}
-                                />
-                                {name.protocolname}
-                              </div>
-                            ))
-                          : null}
-                      
-                      </div> */}
+                   <div>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Protocol name</th>
+                          <th>TVL</th>
+                        </tr>
+                      </thead>
+<tbody>
+  <tr>
+    <th>gmx</th>
+    <th>1</th>
+    <th>3</th>
+  </tr>
+  <tr>
+    <th>gmx</th>
+    <th>1</th>
+    <th>3</th>
+  </tr>
+  <tr>
+    <th>gmx</th>
+    <th>1</th>
+    <th>3</th>
+  </tr>
+</tbody>
+                    </table>
+                   </div>
                     </div>
                   </div>
                   <div className="chartcontainer">

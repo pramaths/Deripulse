@@ -11,7 +11,8 @@
   margin-left: 5%;
   margin-right: 5%;
   max-height: 90vh;
-  scrollbar-width: none;
+overflow: scroll;
+
   ::-webkit-scrollbar {
     display: none;
 }
@@ -102,26 +103,7 @@ align-items: center;
 }
 
 
-.box .pagination {
-  align-items: flex-start;
-  display: inline-flex;
-  gap: 8.03px;
-  left: 169px;
-  top: 20px;
-}
 
-
-
-.box .text-wrapper-8 {
-  color: #ffffff;
-  font-family: "FXDX-SemiBold", Helvetica;
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: normal;
-  margin-top: -0.68px;
-  position: relative;
-  width: fit-content;
-}
 
 .box .icon {
   height: 24.49px;
@@ -265,6 +247,10 @@ position:sticky;
   color: #396ef7;
   width: 100%;
 }
+.tmainhead {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
 
 
@@ -340,7 +326,7 @@ overflow-x: scroll;
 }
 
 .tmainhead {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bolder;
 }
 .datatable{
@@ -364,7 +350,7 @@ table{
  margin: 0 auto;
  padding: 0;
   border-collapse: collapse;
-  width: 95%;
+  width: 100%;
   justify-content: center;
   border-spacing: 0 !important;
 }
@@ -385,13 +371,16 @@ td {
 }
 thead{
   border-collapse: collapse !important;
-  background-color: rgb(44, 43, 43);
+  background-color: rgb(38, 37, 37);
   border: none;
 
 }
 .topchainstable{
   border-collapse: collapse;
   width: 100%;
+  overflow: scroll;
+  min-width: 1000px;
+  margin-top: 1rem;
 }
 table, th, td, tr {
   border: none !important;
