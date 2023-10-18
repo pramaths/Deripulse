@@ -148,13 +148,13 @@ useEffect(() => {
     return (
      
           <div className="layout">
-            <div className="home-contianer">
+            <div className="topchain-container">
               <div className="box">
                 <div className="group">
                   <div className="marketsize">
                     <div className="headers">
-                      <div className="heading">Top Chains</div>
-                      <Image className="group-2" alt="Group" src={star} />
+                      <div className="heading">Top Chains
+                      <Image className="group-2" alt="Group" src={star} /></div>
                       <div className="pagination">
               <Image data-tooltip-id="topGainers" src={info} />
               <ReactTooltip
@@ -167,30 +167,33 @@ useEffect(() => {
 
                     <div className="data">
                    <div>
-                    <table>
+                    <table className="table1">
                       <thead>
                         <tr>
+                          <th>#</th>
                           <th>Name</th>
-                          <th>Protocol name</th>
-                          <th>TVL</th>
+                          
+                          <th>24hr Vloume</th>
                         </tr>
                       </thead>
-<tbody>
-  <tr>
-    <th>gmx</th>
-    <th>1</th>
-    <th>3</th>
-  </tr>
-  <tr>
-    <th>gmx</th>
-    <th>1</th>
-    <th>3</th>
-  </tr>
-  <tr>
-    <th>gmx</th>
-    <th>1</th>
-    <th>3</th>
-  </tr>
+                      <tbody>
+{tabledata.slice(0,3).map((chain, index) => {
+    return (
+        <tr key={index}>
+            <td>
+              {chain.rank}</td>
+            <td className="chaincell">
+            <Image
+                            src={getChainSVGUrl(chain.chainName)}
+                            alt={chain.chainName}
+                            height={22}
+                            width={22}
+                            title={chain.chainName}
+                          />{chain.chainName}</td>
+            <td>$ {chain.avgVolume24h.toFixed(2)}</td>
+        </tr>
+    );
+})}
 </tbody>
                     </table>
                    </div>

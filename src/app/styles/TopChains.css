@@ -5,14 +5,13 @@
   flex-direction: column;
 
 }
-.home-contianer{
+.topchain-container{
   display: flex;
   flex-direction: column;
   margin-left: 5%;
   margin-right: 5%;
-  max-height: 90vh;
-overflow: scroll;
-
+overflow-x: scroll;
+overflow-y: scroll;
   ::-webkit-scrollbar {
     display: none;
 }
@@ -28,14 +27,13 @@ overflow: scroll;
   width: 100%;
   display: flex;
   gap: 3rem;
- height: 200px;
 }
 
 .box .marketsize {
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
-  background-color: #1f1e1e;
+  background-color: #161515;
   border-radius: 0.5rem;
   width: 35%;
 }
@@ -44,7 +42,7 @@ overflow: scroll;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
-  background-color: #151515;
+  background-color: #161515;
   border-radius: 0.5rem;
   width: 65%;
 }
@@ -58,7 +56,7 @@ overflow: scroll;
   letter-spacing: 0;
   line-height: normal;
   display: flex;
-  justify-content: space-between;
+  gap: 0.5rem;
 }
 .heading .div{
   display: flex;
@@ -68,6 +66,7 @@ overflow: scroll;
   display: flex;
   justify-content: space-between;
   margin-top: 0.5rem;
+  align-items: center;
 }
 
 
@@ -255,20 +254,17 @@ position:sticky;
 
 
 @media(min-width:1600px){
-  .home-contianer{
+  .topchain-container{
     margin-left: 20rem;
     margin-right: 20rem;
   }
 }
 
 @media (max-width: 768px) {
-  .home-contianer{
+  .topchain-container{
     display: flex;
     flex-direction: column;
-   min-height: 300vh;
 margin: 0.5rem; 
-
-
   }
   .layout{
     display: flex;
@@ -329,20 +325,12 @@ overflow-x: scroll;
   font-size: 1.5rem;
   font-weight: bolder;
 }
-.datatable{
-  overflow-x: auto;
-  min-width: 1000px;
-  padding: 0;
-}
-.exchanges{
-  font-size: xx-small;
-}
+
 .table{
   overflow-x:auto ;
   padding: 0.3rem;
   top: 0;
   z-index: 1000;
-  position: sticky;
 }
 }
 table{
@@ -378,12 +366,23 @@ thead{
 .topchainstable{
   border-collapse: collapse;
   width: 100%;
-  overflow: scroll;
   min-width: 1000px;
+  overflow-y: scroll;
   margin-top: 1rem;
+}
+.topchainstable thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10; /* keeps the header on top */
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4); /* optional: adds a shadow for a subtle lifting effect */
 }
 table, th, td, tr {
   border: none !important;
+}
+th{
+  top: 0;
+  position: sticky;
+  z-index: 100;
 }
 
 .chaincell{
@@ -391,7 +390,6 @@ table, th, td, tr {
   align-items: center;
   display: flex;
   gap: 0.5rem;
-  /* justify-content: center; */
 }
 th:first-child {
   border-top-left-radius: 1rem;
@@ -408,9 +406,51 @@ th:nth-child(1), td:nth-child(1) {
 
 th:nth-child(2), td:nth-child(2) {
   width: 20%; 
+  white-space: nowrap;
 }
 
 th:last-child, td:last-child {
   text-align: center;
   width: 15%; 
+}
+
+.table1 th:nth-child(1){
+width: 3%;
+text-align: left;
+}
+.table1 th:nth-child(2) {
+  text-align: left;
+  }
+.table1 th:nth-child(3) {
+  text-align: right;
+  }
+.table1 td:nth-child(3) {
+  text-align: right;
+  }
+.table1 td:nth-child(1), .table1 td:nth-child(2) {
+  padding-right: 10px; 
+  text-align: left;
+}
+
+.table1 thead{
+  background-color: #151515;
+  text-align: left;
+ top: 0;
+ position: sticky;
+}
+
+.table1 th{
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+.table1 td{
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.table1{
+  margin-top: 1rem;
 }
