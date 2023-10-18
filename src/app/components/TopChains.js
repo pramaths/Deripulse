@@ -148,13 +148,13 @@ useEffect(() => {
     return (
      
           <div className="layout">
-            <div className="home-contianer">
+            <div className="topchain-container">
               <div className="box">
                 <div className="group">
                   <div className="marketsize">
                     <div className="headers">
-                      <div className="heading">Top Chains</div>
-                      <Image className="group-2" alt="Group" src={star} />
+                      <div className="heading">Top Chains
+                      <Image className="group-2" alt="Group" src={star} /></div>
                       <div className="pagination">
               <Image data-tooltip-id="topGainers" src={info} />
               <ReactTooltip
@@ -166,24 +166,37 @@ useEffect(() => {
                     </div>
 
                     <div className="data">
-                   
-                      {/* <div className="exchanges">
-                        {data
-                          ? data.slice(0, 4).map((name, index) => (
-                              <div key={index} className="text-wrapper">
-                                <Image
-                                  className="mark"
-                                  alt="Mark"
-                                  src={name.logo}
-                                  width={15}
-                                  height={15}
-                                />
-                                {name.protocolname}
-                              </div>
-                            ))
-                          : null}
-                      
-                      </div> */}
+                   <div>
+                    <table className="table1">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Name</th>
+                          
+                          <th>24hr Vloume</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+{tabledata.slice(0,3).map((chain, index) => {
+    return (
+        <tr key={index}>
+            <td>
+              {chain.rank}</td>
+            <td className="chaincell">
+            <Image
+                            src={getChainSVGUrl(chain.chainName)}
+                            alt={chain.chainName}
+                            height={22}
+                            width={22}
+                            title={chain.chainName}
+                          />{chain.chainName}</td>
+            <td>$ {chain.avgVolume24h.toFixed(2)}</td>
+        </tr>
+    );
+})}
+</tbody>
+                    </table>
+                   </div>
                     </div>
                   </div>
                   <div className="chartcontainer">
