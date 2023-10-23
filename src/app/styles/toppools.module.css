@@ -30,12 +30,15 @@
   }
 }
 
+.layout{
+  display: flex;
+  flex-direction: column;
+}
 .resolution {
   background-color: #000000;
-  height: max-content;
-  width: max-content;
   height: auto;
   margin: 3rem;
+  flex-direction: column;
 }
 
 .tooltip {
