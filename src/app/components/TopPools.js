@@ -291,7 +291,6 @@
 // export default TopPools;
 "use client";
 import React, { useState, useEffect } from "react";
-import "../styles/TopChains.css";
 import {
   XAxis,
   YAxis,
@@ -433,7 +432,7 @@ const TopChains = () => {
           let totalVolume24h = 0;
           let totalChange7d = 0;
           let totalChange1d = 0;
-          let protocolsArray = []; // To store protocol names for the current chain
+          let protocolsArray = []; 
 
           data[chain].forEach((protocol) => {
             if (protocol.chainTvls && protocol.chainTvls[chain]) {
@@ -576,10 +575,8 @@ const TopChains = () => {
                   <Image className="group-2" alt="Group" src={star} />
                 </div>
               </div>
-              <ResponsiveContainer width="100%" height={200}>
+              <ResponsiveContainer width="100%" height={120}>
                 <AreaChart data={lineData}>
-                  <XAxis dataKey="name" />
-                  <YAxis />
                   <Tooltip />
                   <Area
                     type="monotone"
@@ -608,7 +605,6 @@ const TopChains = () => {
                 <th>#</th>
                 <th>Pool Name</th>
                 <th>Price</th>
-
                 <th>Name</th>
                 <th>Chain</th>
                 <th>APY%</th>
@@ -621,7 +617,7 @@ const TopChains = () => {
                 TAPR.map((pool, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
-                    <td className="chaincell">
+                    <td className="poolname">
                       <span>{TAPR[index].symbol.replace(/-/g, " / ")}</span>
                       <ReactTooltip />
                     </td>
@@ -645,15 +641,20 @@ const TopChains = () => {
                     <td> {TAPR[index].apy.toFixed(2)}%</td>
                     <td>
                       {TAPR[index].apy30D !== null
-                        ? TAPR[index].apy30D.toFixed(2) + "%"
-                        : "-"}
+                        ? (
+                          <span className={TAPR[index].apy30D>0?'greenText':'redText'}>
+                        {  TAPR[index].apy30D.toFixed(2) + "%"}
+                          </span>
+                       ) : "-"}
                     </td>
                     <td>
-                      {" "}
-                      {TAPR[index].apy7D !== null
-                        ? TAPR[index].apy7D.toFixed(2) + "%"
-                        : "-"}
-                    </td>
+    {TAPR[index].apy7D !== null ? (
+        <span className={TAPR[index].apy7D > 0 ? 'greenText' : 'redText'}>
+            {TAPR[index].apy7D.toFixed(2) + "%"}
+        </span>
+    ) : "-"}
+</td>
+
                   </tr>
                 ))}
             </tbody>

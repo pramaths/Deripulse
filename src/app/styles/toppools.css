@@ -32,7 +32,8 @@
     flex-direction: column;
     background-color: #161515;
     border-radius: 0.5rem;
-    width: 35%;
+    width: 50%;
+    background-image: url('../../assests/graphup.svg');
   }
   
   .box .chartcontainer {
@@ -81,18 +82,8 @@
     justify-content: space-between;
     gap: 1rem;
     margin: 0.2rem;
-    height: px;
   }
-  
-  
-  
-  
-  .box .icon {
-    height: 24.49px;
-    position: relative;
-    width: 24.49px;
-  }
-  
+
   .tableheader {
     display: flex;
     justify-content: space-between;
@@ -101,9 +92,7 @@
   }
   
   .div {
-   height: auto;
-  
-    
+   height: auto; 
   }
   
   .datatable {
@@ -124,7 +113,6 @@
     padding: 1rem;
     border-radius: 0.5rem;
     background-color: #201f1f;
-    /* background-color: rgb(52, 28, 235); */
   margin-bottom: 1rem;
   padding-right: 1.5rem;
   z-index: 2;
@@ -132,7 +120,6 @@
   position:sticky;
   
   }
-  
   .tooltip {
     position: relative;
     display: inline-block;
@@ -181,61 +168,18 @@
     margin-left: 0.5rem;
   }
   
-  
-  .rightheading{
-    display: flex;
-    flex-direction: row;
-  }
-  .rightheading .all{
-  
-    margin-right:0.5rem ;
-  }
-  .rightheading .candle{
-    border: 2px solid rgb(65, 62, 63);
-    border-radius: 0.2rem;
-  }
-  
   .minih{
     display: flex;
     justify-content: space-between;
     margin-top: 0.5rem;
     margin-bottom: 0.5re;
   }
-  
-  
-  .recharts-pie-label-line, .recharts-legend-item-text {
-    fill: #333;
-  }
-  
-  .recharts-tooltip-wrapper {
-    background-color: rgba(255, 255, 255, 0.9); 
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  
-  .recharts-tooltip-label {
-    color: #333; 
-    font-weight: bold;
-  }
-  
-  .recharts-tooltip-item {
-    color: #555; 
-  }
-  .linechart{
-    margin-top: 1rem;
-    color: #396ef7;
-    width: 100%;
-  }
+
   .tmainhead {
     font-size: 1.5rem;
     font-weight: bold;
   }
-  
-  
-  
+
   @media(min-width:1600px){
     .topchain-container{
       margin-left: 20rem;
@@ -263,17 +207,12 @@
   .group{
     flex-direction: column;
   }
-   .box  .marketsize{
-    width: 100%;
-  }
   .box .chartcontainer{
     width: 100%;
   }
   .div{
     margin: 0rem;
   overflow-x: scroll;
-  
-      
   ::-webkit-scrollbar {
     display: none;
   }
@@ -369,21 +308,16 @@
     position: sticky;
     z-index: 100;
   }
-  
-  .chaincell{
-    text-align: center;
-    align-items: center;
-    display: flex;
-    gap: 0.5rem;
-    flex-direction: row;
-  }
+
  .chainss{
     align-items: center;
     display: flex;
     flex-direction: row;
     white-space: normal;  
     word-wrap: break-word; 
-    text-align: right;
+    /* max-width: 20%; */
+    gap: 0.2rem;
+    text-align: left;
   }
   th:first-child {
     border-top-left-radius: 1rem;
@@ -396,6 +330,11 @@
   }
   th:nth-child(1), td:nth-child(1) {
     width: 3%; 
+  }
+  
+  th:nth-child(4) {
+    text-align: left;
+    padding-left: 2rem; 
   }
   
   th:nth-child(2), td:nth-child(2) {
@@ -427,7 +366,6 @@
     white-space: nowrap;
   }
  .table1 th:nth-child(2) {
-    /* padding-right: 10px;  */
     text-align: center !important;
   }
   
@@ -446,12 +384,12 @@
   .table1 td{
     margin: 0;
     padding: 0;
-    margin-bottom: 1rem;
+    /* margin-bottom: 0.8rem; */
     margin-top: 1rem;
   }
   
   .table1{
-    margin-top: 1rem;
+    margin-top: 0.7rem;
   }
 
   .redText {
@@ -465,3 +403,12 @@
     font-size: 14px;  
     padding: 8px;    
   }
+  .poolname{
+    word-wrap: break-word;
+    overflow-wrap: break-word; 
+    max-width: 20%;  
+}
+.poolname > * {
+    width: 100%;
+    text-align: center;
+}
