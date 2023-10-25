@@ -272,6 +272,7 @@ console.log(tvl)
                   <div className="thead-protocol">Protocol</div>
                   <div className="thead-marketcap">Market Cap</div>
                   <div className="thead-7dchange">7d Change</div>
+                  <div className="thead-24hrvolume">24hr Volume</div>
                   <div className="thead-pools">Efficiency</div>
                   <div className="thead-last30">Last 30d</div>
                 </div>
@@ -317,6 +318,12 @@ console.log(tvl)
                     >
                       {item.change_7d !== null && item.change_7d !== undefined
                         ? `${item.change_7d.toFixed(2)}%`
+                        : "N/A"}
+                    </div>
+                    <div className="tablecell-24hrvolume"
+                   >
+                    {item.volume24h !== null && item.volume24h !== undefined
+                        ? `${format(item.volume24h.toFixed(2))}`
                         : "N/A"}
                     </div>
                     <div className="tablecell-pool">
