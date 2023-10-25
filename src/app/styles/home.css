@@ -245,14 +245,18 @@ margin-left: 0.5rem;
 }
 .thead-protocol{
   width: 15%;
+  justify-content: left;
+  display: flex;
+  align-items: left;
 }
 
 .thead-marketcap{
-  width: 15%;
+  width: 14%;
 }
 
 .thead-7dchange{
   width: 12%;
+  
 }
 .thead-pools{
   width: 16%;
@@ -261,6 +265,19 @@ margin-left: 0.5rem;
   display: flex;
 justify-content: right;
 align-items: right;
+white-space: nowrap;
+}
+.thead-24hrvolume{
+  display: flex;
+  justify-content: left;
+  align-items: left;
+width: 12%;
+  white-space: nowrap;
+}
+.tablecell-24hrvolume{
+  width: 10%;
+  display: flex;
+  justify-content: left;
 }
 .tablecell-rank{
 width: 3%;
@@ -268,7 +285,7 @@ display: flex;
 justify-content: center;
 }
 .tablecell-name{
-  width: 15%;
+  width: 14%;
   display: flex;
 }
 .tablecell-name .nameimg{
@@ -297,7 +314,7 @@ margin-right: 0.6rem;
 }
 
 .tablecell-7dchange{
-  width: 15%;
+  width: 14%;
 }
 .tablecell-pool{
   width:10%;
@@ -448,10 +465,6 @@ position: relative;
   width: 100%;
 }
 
-.thead-tvl{
-  width: 10%;
-  
-}
 .thead-protocol{
   width: 15%;
   z-index: 1;
