@@ -1,294 +1,3 @@
-
-//           <div className={styles.topGainers}>
-//             <div className={styles.tooltip}>
-//               <Image data-tooltip-id="topGainers" src={info} />
-//               <ReactTooltip
-//                 id="topGainers"
-//                 place="bottom"
-//                 content="Top 3 Gainers in terms of APR"
-//               />
-//             </div>
-//             <div className={styles.Heading}>
-//               <span>Top Gainers</span>
-//               <div className={styles.star}>
-//                 <Image src={star} alt="X" />
-//               </div>
-//             </div>
-//             <Image src={graphup} />
-
-//             <div className={styles.list}>
-//               <span>
-//                 1. {APR[0].symbol.substring(0, 12).replace(/-/g, " / ")}
-//               </span>
-//               <div
-//                 className={`${styles.changeAPR1D} ${
-//                   APR[0].apy1D.toFixed(4) < 0
-//                     ? styles.redText
-//                     : styles.greenText
-//                 }`}
-//               >
-//                 {APR[0].apy1D.toFixed(4) > 0 ? "+" : ""}
-//                 {APR[0].apy1D.toFixed(4)}
-//               </div>
-//               <div className={styles.slash}> /</div>
-//               <div
-//                 className={`${styles.changeAPR7D} ${
-//                   APR[0].apy7D < 0
-//                     ? styles.redText
-//                     : styles.greenText
-//                 }`}
-//               >
-//                 {APR[0].apy7D > 0 ? "+" : ""}
-//                 {APR[0].apy7D}
-//               </div>
-//             </div>
-//             <div className={styles.list2}>
-//               <span>
-//                 2. {APR[1].symbol.substring(0, 12).replace(/-/g, " / ")}
-//               </span>
-//               <div
-//                 className={`${styles.changeAPR1D} ${
-//                   APR[1].apy1D< 0
-//                     ? styles.redText
-//                     : styles.greenText
-//                 }`}
-//               >
-//                 {APR[1].apy1D> 0 ? "+" : ""}
-//                 {APR[1].apy1D.toFixed(4)}
-//               </div>
-//               <div className={styles.slash}> /</div>
-//               <div
-//                 className={`${styles.changeAPR7D} ${
-//                   APR[1].apy7D< 0
-//                     ? styles.redText
-//                     : styles.greenText
-//                 }`}
-//               >
-//                 {APR[1].apy7D> 0 ? "+" : ""}
-//                 {APR[1].apy7D}
-//               </div>
-//             </div>
-//             <div className={styles.list3}>
-//               <span>
-//                 3. {APR[2].symbol.substring(0, 12).replace(/-/g, " / ")}
-//               </span>
-//               <div
-//                 className={`${styles.changeAPR1D} ${
-//                   APR[2].apy1D< 0
-//                     ? styles.redText
-//                     : styles.greenText
-//                 }`}
-//               >
-//                 {APR[2].apy1D> 0 ? "+" : ""}
-//                 {APR[2].apy1D.toFixed(4)}
-//               </div>
-//               <div className={styles.slash}> /</div>
-//               <div
-//                 className={`${styles.changeAPR7D} ${
-//                   APR[2].apy7D !== null && APR[2].apy7D< 0
-//                     ? styles.redText
-//                     : styles.greenText
-//                 }`}
-//               >
-//                 {APR[2]?.apy7D?.toFixed(4) !== null
-//                   ? APR[2]?.apy7D?.toFixed(4) > 0
-//                     ? "+" + APR[2]?.apy7D?.toFixed(4)
-//                     : "-"
-//                   : "-"}
-//               </div>
-//             </div>
-//           </div>
-//           <div className={styles.topLosers}>
-//             <div className={styles.Heading}>
-//               <div className={styles.tooltip2}>
-//                 <Image data-tooltip-id="topLosers" src={info} />
-//                 <ReactTooltip
-//                   id="topLosers"
-//                   place="bottom"
-//                   content="Top 3 Losers in terms of APR"
-//                 />
-//               </div>
-//               <span id="TG">Top Losers</span>
-//               <div className={styles.star}>
-//                 <Image src={loss} alt="X" />
-//               </div>
-//             </div>
-//             <Image src={graphdown} alt="X" />
-//             <div className={styles.list}>
-//               <span>
-//                 1. {L_APR[0].symbol.substring(0, 12).replace(/-/g, " / ")}
-//               </span>
-//               <div
-//                 className={`${styles.changeAPR1D} ${
-//                   L_APR[0].apy1D.toFixed(4) < 0
-//                     ? styles.redText
-//                     : styles.greenText
-//                 }`}
-//               >
-//                 {L_APR[0].apy1D.toFixed(4) > 0 ? "+" : ""}
-//                 {L_APR[0].apy1D.toFixed(4)}
-//               </div>
-//               <div className={styles.slash}> /</div>
-//               <div
-//                 className={`${styles.changeAPR7D} ${
-//                   L_APR[0].apy7D !== null && L_APR[1].apy7D.toFixed(4) < 0
-//                     ? styles.redText
-//                     : styles.greenText
-//                 }`}
-//               >
-//                 {L_APR[0].apy7D === null || L_APR[0].apy7D === 0
-//                   ? ""
-//                   : L_APR[0].apy7D.toFixed(4)}
-//               </div>
-//             </div>
-//             <div className={styles.list2}>
-//               <span>
-//                 2. {L_APR[1].symbol.substring(0, 12).replace(/-/g, " / ")}
-//               </span>
-//               <div
-//                 className={`${styles.changeAPR1D} ${
-//                   L_APR[1].apy1D.toFixed(4) < 0
-//                     ? styles.redText
-//                     : styles.greenText
-//                 }`}
-//               >
-//                 {L_APR[1].apy1D.toFixed(4) > 0 ? "+" : ""}
-//                 {L_APR[1].apy1D.toFixed(4)}
-//               </div>
-//               <div className={styles.slash}> /</div>
-//               <div
-//                 className={`${styles.changeAPR7D} ${
-//                   L_APR[1].apy7D !== null && L_APR[1].apy7D.toFixed(4) < 0
-//                     ? styles.redText
-//                     : styles.greenText
-//                 }`}
-//               >
-//                 {L_APR[1].apy7D === null || L_APR[1].apy7D === 0
-//                   ? ""
-//                   : L_APR[1].apy7D.toFixed(4)}
-//               </div>
-//             </div>
-//             <div className={styles.list3}>
-//               <span>
-//                 3. {L_APR[2].symbol.substring(0, 12).replace(/-/g, " / ")}
-//               </span>
-//               <div
-//                 className={`${styles.changeAPR1D} ${
-//                   L_APR[2].apy1D.toFixed(4) < 0
-//                     ? styles.redText
-//                     : styles.greenText
-//                 }`}
-//               >
-//                 {L_APR[2].apy1D.toFixed(4) > 0 ? "+" : ""}
-//                 {L_APR[2].apy1D.toFixed(4)}
-//               </div>
-//               <div className={styles.slash}> /</div>
-//               <div
-//                 className={`${styles.changeAPR7D} ${
-//                   L_APR[2].apy7D !== null && L_APR[2].apy7D.toFixed(4) < 0
-//                     ? styles.redText
-//                     : styles.greenText
-//                 }`}
-//               >
-//                 {L_APR[2].apy7D === null
-//                   ? "-"
-//                   : L_APR[2].apy7D.toFixed(4) > 0
-//                   ? "+"
-//                   : "-"}
-//                 {L_APR[2].apy7D === null
-//                   ? ""
-//                   : Math.abs(L_APR[2].apy7D.toFixed(4))}
-//               </div>
-//             </div>
-//           </div>
-
-//           <div className={styles.prediction}>
-//             <div className={styles.semiHeading}>
-//               AVG APY - {avgAPR.toFixed(4)}%
-//             </div>
-//           </div>
-
-//         </div>
-//         <div className={styles.part2}>
-//           <div className={styles.topPools}>Top Pools</div>
-//           <div className={styles.bar}>
-//             <table className={styles.textbar}>
-//               <thead>
-//                 <tr>
-//                   <th>#</th>
-//                   <th>Pool Name</th>
-//                   <th>Price</th>
-//                   <th>Name</th>
-//                   <th>Chain</th>
-//                   <th>APY%</th>
-//                   <th>Last 30d</th>
-//                   <th>Last 7d</th>
-//                 </tr>
-//               </thead>
-//               <tbody className={styles.tablecells}>
-//                 {TAPR.map((pool, index) => (
-//                   <tr key={index}>
-//                     <td className={styles.tmargin}>{index + 1}</td>
-//                     <td className={styles.tmargin}>
-//                       <div>{TAPR[index].symbol.replace(/-/g, " / ")}</div>
-//                     </td>
-
-//                     <td className={styles.tmargin}>
-//                       ${TAPR[index].tvlUSD.toLocaleString()}
-//                     </td>
-//                     <td className={styles.tmargin}>
-//                       <div className={styles.fix}>
-//                         <img
-//                           className={styles.logoContainer}
-//                           src={TAPR[index].logo}
-//                           alt={TAPR[index].symbol}
-//                         />
-
-//                         <p>{TAPR[index].slug.toUpperCase()}</p>
-//                       </div>
-//                     </td>
-//                     <td className={styles.tmargin}>
-//                       <p>{TAPR[index].chain}</p>
-//                     </td>
-
-//                     <td className={styles.tmargin}>
-//                       {TAPR[index].apy.toFixed(2)}%
-//                     </td>
-//                     <td
-//                       className={`${styles.tmargin} ${
-//                         TAPR[index].apy30D !== null && TAPR[index].apy30D < 0
-//                           ? styles.redText
-//                           : styles.greenText
-//                       }`}
-//                     >
-//                       {TAPR[index].apy30D !== null
-//                         ? TAPR[index].apy30D.toFixed(2) + "%"
-//                         : "-"}
-//                     </td>
-//                     <td
-//                       className={`${styles.tmargin} ${
-//                         TAPR[index].apy7D !== null && TAPR[index].apy7D < 0
-//                           ? styles.redText
-//                           : styles.greenText
-//                       }`}
-//                     >
-//                       {TAPR[index].apy7D !== null
-//                         ? TAPR[index].apy7D.toFixed(2) + "%"
-//                         : "-"}
-//                     </td>
-//                   </tr>
-//                 ))}
-//               </tbody>
-//             </table>
-//           </div>
-//         </div>
-//       </div>
-//       </div>
-//     );
-//   }
-// };
-
-// export default TopPools;
 "use client";
 import React, { useState, useEffect } from "react";
 import {
@@ -516,17 +225,31 @@ const TopChains = () => {
                 <div>
                   <table className="table1">
                     <tbody>
-                      {tabledata.slice(0, 3).map((chain, index) => {
-                        return (
-                          <tr key={index}>
-                            <td>{chain.rank}.</td>
-                            <td className="chaincell">
-                              {chain.chainName}
-                            </td>
-                            <td>$ {chain.avgVolume24h.toFixed(2)}</td>
-                          </tr>
-                        );
-                      })}
+                    {APR.slice(0, 3).map((item, index) => (
+        <tr key={index}>
+          <td>{index + 1}.</td>
+          <td>{item.symbol.substring(0, 12).replace(/-/g, " / ")}</td>
+          <td className="tdapy">
+          <span className={
+              item.apy1D < 0 ?"redText" : "greenText"
+            }>
+            {item.apy1D > 0 ? "+" : ""}
+            {item.apy1D.toFixed(4)}
+          </span>
+          {" "}/{" "}
+          <span className={
+              item.apy7D !== null && item.apy7D < 0 ?"redText" : "greenText"
+            }>
+            {item?.apy7D?.toFixed(4) !== null
+              ? item?.apy7D?.toFixed(4) > 0
+                ? "+" + item?.apy7D?.toFixed(4)
+                : item?.apy7D?.toFixed(4)
+              : "-"}
+          </span>
+          </td>
+       
+        </tr>
+      ))}
                     </tbody>
                   </table>
                 </div>
@@ -535,7 +258,7 @@ const TopChains = () => {
             <div className="marketsize">
               <div className="headers">
                 <div className="heading">
-                  Top Chains
+                  Top Losers
                   <Image className="group-2" alt="Group" src={star} />
                 </div>
                 <div className="pagination">
@@ -552,17 +275,32 @@ const TopChains = () => {
                 <div>
                   <table className="table1">
                     <tbody>
-                      {tabledata.slice(0, 3).map((chain, index) => {
-                        return (
-                          <tr key={index}>
-                            <td>{chain.rank}.</td>
-                            <td className="chaincell">
-                              {chain.chainName}
-                            </td>
-                            <td>$ {chain.avgVolume24h.toFixed(2)}</td>
-                          </tr>
-                        );
-                      })}
+                    {L_APR.slice(0, 3).map((item, index) => (
+        <tr key={index}>
+          
+          <td>{index + 1}.{" "}</td>
+          <td>  {" "}{item.symbol.substring(0, 12).replace(/-/g, " / ")}</td>
+          <td className="tdapy">
+          <span className={
+              item.apy1D.toFixed(4) < 0 ? "redText" : "greenText"
+            }>
+            {item.apy1D.toFixed(4) > 0 ? "+" : ""}
+            {item.apy1D.toFixed(4)}
+          </span>
+          {" "}/{" "}
+          <span className={
+              item.apy7D !== null && item.apy7D.toFixed(4) < 0 ? "redText" : "greenText"
+            }>
+            {item?.apy7D?.toFixed(4) !== null
+              ? item?.apy7D?.toFixed(4) > 0
+                ? "+" + item?.apy7D?.toFixed(4)
+                : item?.apy7D?.toFixed(4)
+              : "-"}
+          </span>
+          </td>
+          
+        </tr>
+      ))}
                     </tbody>
                   </table>
                 </div>
