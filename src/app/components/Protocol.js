@@ -8,8 +8,7 @@ import arrowup from "../../assests/arrowup.svg";
 import link from "../../assests/link.svg";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import 'keen-slider/keen-slider.min.css'
-import { useKeenSlider } from 'keen-slider/react'
+
 import {
   ResponsiveContainer,
   LineChart,

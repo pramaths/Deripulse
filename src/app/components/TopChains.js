@@ -272,7 +272,7 @@ useEffect(() => {
       <thead>
         <tr>
           <th>#</th>
-          <th>Name</th>
+          <th>ChainName</th>
           <th>Protocols</th>
         
           <th>TVL</th>
