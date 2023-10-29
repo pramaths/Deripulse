@@ -58,6 +58,7 @@
 .info {
   display: inline-flex;
   margin-top: 1rem;
+  gap: 1rem;
 }
 
 .urlClick {
@@ -87,7 +88,7 @@
   margin-right: -7.4rem;
 
   min-width: 26.625rem;
-  min-height: 32.9375rem;
+  min-height: 36.9375rem;
   width: auto;
   height: auto;
   flex-shrink: 0;
@@ -304,6 +305,8 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  white-space: nowrap;
+  padding-right: 1rem;
 }
 
 .ATL {
@@ -311,8 +314,10 @@
   font-family: Inter;
   font-size: 1rem;
   font-style: normal;
+  white-space: nowrap;
   font-weight: 700;
   line-height: normal;
+  padding-right: 1rem;
 }
 
 .chaintvldata{
@@ -392,7 +397,7 @@ width: 100%;
     margin-left: -5.4rem;
   
     min-width: 5.625rem;
-    min-height: 32.9375rem;
+    min-height: 36.9375rem;
     width: auto;
     height: auto;
     flex-shrink: 0;

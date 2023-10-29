@@ -1,28 +1,40 @@
-import clientPromise from '../../lib/dbConnect';
+import clientPromise from "../../../lib/mongodb";
+import { NextResponse } from "next/server";
 
-export default async (req, res) => {
-    try {
-      const { chainName } = req.query;
-      
-      const client = await clientPromise;
-      const db = client.db(); 
-      const collection = db.collection('wholeData'); 
-  
-      console.log("Connected to database and set collection");
-  
-      const result = await collection.findOne({}, { projection: { [`chainwise.${chainName}`]: 1 } });
-      console.log("Fetched data from MongoDB:", result);
-  
-      const chainData = result?.chainwise?.[chainName];
-  
-      if (!chainData) {
-        res.status(404).json({ error: 'Chain not found.' });
-        return;
-      }
-  
-      res.status(200).json(chainData);
-    } catch (error) {
-      console.error("Error occurred:", error);
-      res.status(500).json({ error: 'Internal server error.' });
+let mongoClient;
+
+async function fetchDataFromDatabase(chainName) {
+  const database = mongoClient.db("deri-pulse");
+  const collection = database.collection("wholeData");
+
+  const result = await collection.findOne({}, { projection: { [`chainwise.${chainName}`]: 1 } });
+
+  return result?.chainwise?.[chainName];
+}
+
+export async function GET(req, res) {
+  console.log("here");
+  if (req.method !== "GET") {
+    return new NextResponse(405); 
+  }
+
+  const { chainName } = req.query;
+
+  if (!chainName) {
+    return NextResponse.json({ error: "Chain name not provided." });
+  }
+
+  try {
+    mongoClient = await clientPromise;
+    const responseData = await fetchDataFromDatabase(chainName);
+
+    if (!responseData) {
+      return NextResponse.json({ error: "Data for given chain not found." });
     }
-};
+
+    return NextResponse.json(responseData);
+  } catch (error) {
+    console.error("Error:", error);
+    return NextResponse.json({ error: error.message });
+  }
+}

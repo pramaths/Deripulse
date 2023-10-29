@@ -120,6 +120,33 @@ const Protocol = (props) => {
                   </a>
                 </div>
               )}
+              {Filtereddata.url && (
+                <div className={styles.infobox}>
+                  <Image className={styles.urlClick} src={link} />
+                  {new URL(Filtereddata.url).hostname}
+                  <a target="_blank" rel="noopener noreferrer" href={url}>
+                    <Image src={arrowup} />
+                  </a>
+                </div>
+              )}
+              {Filtereddata.url && (
+                <div className={styles.infobox}>
+                  <Image className={styles.urlClick} src={link} />
+                  {new URL(Filtereddata.url).hostname}
+                  <a target="_blank" rel="noopener noreferrer" href={url}>
+                    <Image src={arrowup} />
+                  </a>
+                </div>
+              )}
+              {Filtereddata.url && (
+                <div className={styles.infobox}>
+                  <Image className={styles.urlClick} src={link} />
+                  {new URL(Filtereddata.url).hostname}
+                  <a target="_blank" rel="noopener noreferrer" href={url}>
+                    <Image src={arrowup} />
+                  </a>
+                </div>
+              )}
             </div>
           </div>
           <div className={styles.part2}>
