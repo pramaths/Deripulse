@@ -9,14 +9,3 @@ const ChainDataPage = ({ chainName }) => {
   );
 };
 
-export async function getServerSideProps(context) {
-  const { chainName } = context.params;
-
-  return {
-    props: {
-      chainName
-    }
-  };
-}
-
-export default ChainDataPage;
